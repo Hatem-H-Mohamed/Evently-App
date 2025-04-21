@@ -28,10 +28,13 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animated_toggle_switch: ^0.8.4
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
   flutter_native_splash: ^2.4.6
+  flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.1.0
   google_fonts: ^6.2.1
 
 dev_dependencies:
@@ -49,7 +52,17 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/
+    - assets/splash_screen/app_splash_logo.png
+    - assets/onboarding_screen/app_logo.png
+    - assets/onboarding_screen/being_creative.png
+    - assets/onboarding_screen/hot_trending.png
+    - assets/onboarding_screen/being_creative2.png
+    - assets/onboarding_screen/social_media.png
+    - assets/onboarding_screen/EG.svg
+    - assets/onboarding_screen/LR.svg
+    - assets/onboarding_screen/Moon.svg
+    - assets/onboarding_screen/Sun.svg
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see

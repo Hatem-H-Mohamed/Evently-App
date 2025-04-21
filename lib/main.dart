@@ -1,5 +1,8 @@
+import 'package:evently_app/core/app_theme/theme/dark_theme.dart';
+import 'package:evently_app/core/app_theme/theme/light_them.dart';
 import 'package:evently_app/features/app_intro/view/screens/intro_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,13 +13,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Evently App",
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const IntroScreen(),
+    return ScreenUtilInit(
+      designSize: const Size(393, 841),
+      builder: (_, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: getLightTheme(),
+          darkTheme: getDarkTheme(),
+          themeMode: ThemeMode.light,
+          home: child,
+        );
+      },
+      child: const IntroScreen(),
     );
   }
 }
