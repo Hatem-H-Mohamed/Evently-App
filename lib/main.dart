@@ -1,6 +1,7 @@
 import 'package:evently_app/core/app_theme/theme/dark_theme.dart';
 import 'package:evently_app/core/app_theme/theme/light_them.dart';
 import 'package:evently_app/features/app_intro/view/screens/intro_screen.dart';
+import 'package:evently_app/features/app_intro/view/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const IntroScreen(),
+      child: const OnboardingScreen(),
     );
   }
 }
