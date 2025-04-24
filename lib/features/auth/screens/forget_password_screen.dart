@@ -17,24 +17,32 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Forget Password'), centerTitle: true),
       body: Form(
-        child: Padding(
-          padding: EdgeInsets.all(16.w),
-          child: Column(
-            children: [
-              Image.asset(
-                AppAssets.authForgetPass,
-                width: 343.w,
-                height: 335.h,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(16.w),
+            child: SizedBox(
+              height: 690.h,
+              child: Column(
+                children: [
+                  Image.asset(
+                    AppAssets.authForgetPass,
+                    width: 343.w,
+                    height: 335.h,
+                  ),
+                  SizedBox(height: 24.h),
+                  AuthField(
+                    hintText: "Email",
+                    isPassword: false,
+                    prefixIcon: Icon(Icons.email),
+                  ),
+                  SizedBox(height: 16.h),
+                  CustomElevatedButton(
+                    title: "Reset Password",
+                    onPressed: () {},
+                  ),
+                ],
               ),
-              SizedBox(height: 24.h),
-              AuthField(
-                hintText: "Email",
-                isPassword: false,
-                prefixIcon: Icon(Icons.email),
-              ),
-              SizedBox(height: 16.h),
-              CustomElevatedButton(title: "Reset Password", onPressed: () {}),
-            ],
+            ),
           ),
         ),
       ),

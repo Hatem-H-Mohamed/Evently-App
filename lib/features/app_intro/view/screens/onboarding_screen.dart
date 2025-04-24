@@ -110,7 +110,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                     onPressed: () {
                       if (_index == 2) {
-                        Navigator.pushNamed(context, "");
+                        Navigator.of(context).pushNamed('/signIn');
                       } else {
                         _pageController.nextPage(
                           duration: const Duration(milliseconds: 300),
