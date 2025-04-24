@@ -1,7 +1,7 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:evently_app/core/app_assets/app_assets.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
-import 'package:evently_app/features/app_intro/view/widgets/custom_elevated_button.dart';
+import 'package:evently_app/core/widgets/custom_elevated_button.dart';
 import 'package:evently_app/features/app_intro/view/widgets/intro_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -129,7 +129,12 @@ class _IntroScreenState extends State<IntroScreen> {
                 ],
               ),
               SizedBox(height: 28.h),
-              CustomElevatedButton(title: "Let's Start", onPressed: () {}),
+              CustomElevatedButton(
+                title: "Let's Start",
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/onboarding');
+                },
+              ),
             ],
           ),
         ),

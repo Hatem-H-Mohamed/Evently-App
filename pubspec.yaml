@@ -63,6 +63,8 @@ flutter:
     - assets/onboarding_screen/LR.svg
     - assets/onboarding_screen/Moon.svg
     - assets/onboarding_screen/Sun.svg
+    - assets/Auth/google_logo.svg
+    - assets/Auth/forget_password.png
     
     
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -12,4 +12,17 @@ ThemeData getDarkTheme() => ThemeData(
     bodyColor: AppColorDark.textBodyColor,
   ),
   elevatedButtonTheme: getElevatedButtonTheme(),
+  inputDecorationTheme: InputDecorationTheme(
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(16),
+      borderSide: BorderSide(color: AppColorCommon.gray),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(16),
+      borderSide: BorderSide(color: AppColorCommon.primary),
+    ),
+    contentPadding: const EdgeInsets.all(16),
+    border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
+    hintStyle: const TextStyle(fontSize: 18),
+  ),
 );

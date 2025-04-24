@@ -13,4 +13,6 @@ class AppAssets {
   static const String onboardingUsa = "assets/onboarding_screen/LR.svg";
   static const String onboardingMoon = "assets/onboarding_screen/Moon.svg";
   static const String onboardingSun = "assets/onboarding_screen/Sun.svg";
+  static const String authGoogle = "assets/Auth/google_logo.svg";
+  static const String authForgetPass = "assets/Auth/forget_password.png";
 }
