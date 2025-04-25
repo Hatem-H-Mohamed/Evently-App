@@ -1,4 +1,4 @@
-import 'package:evently_app/core/app_assets/app_assets.dart';
+import 'package:evently_app/core/app_assets/images/app_images.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
 import 'package:evently_app/features/app_intro/view/widgets/intro_component.dart';
 import 'package:flutter/material.dart';
@@ -21,19 +21,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       title: "Find Events That Inspire You",
       description:
           "Dive into a world of events crafted to fit your unique interests. Whether you're into live music, art  , professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.",
-      image: AppAssets.onboardingImage1,
+      image: AppImages.onboardingImage1,
     ),
     IntroComponent(
       title: "Effortless Event Planning",
       description:
           "Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we’ve got you covered. Plan with ease and focus on what matters – creating an unforgettable experience for you and your guests.",
-      image: AppAssets.onboardingImage2,
+      image: AppImages.onboardingImage2,
     ),
     IntroComponent(
       title: "Connect with Friends & Share Moments",
       description:
           "Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.",
-      image: AppAssets.onboardingImage3,
+      image: AppImages.onboardingImage3,
     ),
   ];
 
@@ -48,7 +48,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               SizedBox(height: 15.h),
               Center(
                 child: Image.asset(
-                  AppAssets.onboardingLogo,
+                  AppImages.onboardingLogo,
                   height: 50.h,
                   width: 157.w,
                 ),

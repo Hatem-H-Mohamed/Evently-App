@@ -1,37 +1,45 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
-import 'package:evently_app/core/app_assets/app_assets.dart';
+import 'package:evently_app/core/app_assets/icons/App_icons.dart';
+import 'package:evently_app/core/app_assets/images/app_images.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
 import 'package:evently_app/core/widgets/custom_elevated_button.dart';
-import 'package:evently_app/features/auth/widgets/auth_field.dart';
+import 'package:evently_app/features/auth/view/widgets/auth_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Register"), centerTitle: true),
       body: Form(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 75.h),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 28.h),
             child: SizedBox(
               height: 690.h,
               child: Column(
                 children: [
                   Image.asset(
-                    AppAssets.splashLogo,
+                    AppImages.splashLogo,
                     height: 186.h,
                     width: 136.w,
                   ),
                   Spacer(),
+                  AuthField(
+                    hintText: "Name",
+                    isPassword: false,
+                    prefixIcon: Icon(Icons.person),
+                  ),
+                  SizedBox(height: 16.h),
                   AuthField(
                     hintText: "Email",
                     isPassword: false,
@@ -47,30 +55,27 @@ class _SignInScreenState extends State<SignInScreen> {
                       onPressed: () {},
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamed("/forgetPassword");
-                      },
-                      child: Text(
-                        "Forgot Password?",
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColorCommon.primary,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
+                  SizedBox(height: 16.h),
+                  AuthField(
+                    hintText: "Re Password",
+                    isPassword: true,
+                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.visibility),
+                      onPressed: () {},
                     ),
                   ),
-                  CustomElevatedButton(title: "Login", onPressed: () {}),
+                  Spacer(),
+                  CustomElevatedButton(
+                    title: "Creat Account",
+                    onPressed: () {},
+                  ),
                   Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't Have Account ? ",
+                        "Already Have Account ? ",
                         style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w700,
@@ -79,10 +84,10 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).pushNamed("/signUp");
+                          // Navigate to sign-up screen
                         },
                         child: Text(
-                          "Create Account",
+                          "Login",
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w700,
@@ -95,56 +100,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                     ],
                   ),
-                  Spacer(),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          color: Colors.blue,
-                          thickness: 1.2,
-                          endIndent: 16,
-                          indent: 26,
-                        ),
-                      ),
-                      Text(
-                        "Or",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                        ),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          color: Colors.blue,
-                          thickness: 1.2,
-                          indent: 16,
-                          endIndent: 26,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(color: AppColorCommon.primary),
-                        borderRadius: BorderRadius.circular(16.r),
-                      ),
-                    ),
-                    icon: SvgPicture.asset(AppAssets.authGoogle),
-                    label: Text(
-                      "Login with Google",
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w700,
-                        color: AppColorCommon.primary,
-                      ),
-                    ),
-                  ),
-                  Spacer(),
+                  Spacer(flex: 2),
                   AnimatedToggleSwitch<int>.rolling(
                     indicatorSize: Size(30.w, 27.h),
                     style: ToggleStyle(
@@ -165,13 +121,13 @@ class _SignInScreenState extends State<SignInScreen> {
                     iconList: [
                       SvgPicture.asset(
                         fit: BoxFit.fill,
-                        AppAssets.onboardingUsa,
+                        AppIconsSvg.onboardingUsa,
                         width: 20.w,
                         height: 20.h,
                       ),
                       SvgPicture.asset(
                         fit: BoxFit.fill,
-                        AppAssets.onboardingEg,
+                        AppIconsSvg.onboardingEg,
                         width: 20.w,
                         height: 20.h,
                       ),

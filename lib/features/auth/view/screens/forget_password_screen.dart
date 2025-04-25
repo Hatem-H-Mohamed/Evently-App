@@ -1,6 +1,6 @@
-import 'package:evently_app/core/app_assets/app_assets.dart';
+import 'package:evently_app/core/app_assets/images/app_images.dart';
 import 'package:evently_app/core/widgets/custom_elevated_button.dart';
-import 'package:evently_app/features/auth/widgets/auth_field.dart';
+import 'package:evently_app/features/auth/view/widgets/auth_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,7 +25,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               child: Column(
                 children: [
                   Image.asset(
-                    AppAssets.authForgetPass,
+                    AppImages.authForgetPass,
                     width: 343.w,
                     height: 335.h,
                   ),

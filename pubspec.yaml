@@ -32,6 +32,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.0
   flutter_native_splash: ^2.4.6
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.1.0
@@ -65,8 +66,14 @@ flutter:
     - assets/onboarding_screen/Sun.svg
     - assets/Auth/google_logo.svg
     - assets/Auth/forget_password.png
-    
-    
+    - assets/main_layout/fav_selected.svg
+    - assets/main_layout/fav_unselected.svg
+    - assets/main_layout/home_selected.svg
+    - assets/main_layout/home_unselected.svg
+    - assets/main_layout/map_unselected.svg
+    - assets/main_layout/map_selected.svg
+    - assets/main_layout/profile_selected.svg
+    - assets/main_layout/profile_unselected.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see
