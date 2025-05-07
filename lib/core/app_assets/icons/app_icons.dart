@@ -12,9 +12,13 @@ class AppIconsSvg {
   static const String homeSelected = "assets/main_layout/home_selected.svg";
   static const String homeUnselected = "assets/main_layout/home_unselected.svg";
   static const String mapSelected = "assets/main_layout/map_selected.svg";
+  static const String mapSelectedDarkMode =
+      "assets/main_layout/map_selected_dark_mode.svg";
   static const String mapUnselected = "assets/main_layout/map_unselected.svg";
   static const String profileSelected =
       "assets/main_layout/profile_selected.svg";
   static const String profileUnselected =
       "assets/main_layout/profile_unselected.svg";
+
+  static const String dropListIcon = "assets/profile/drop_icon.svg";
 }

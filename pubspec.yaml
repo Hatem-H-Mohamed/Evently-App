@@ -74,6 +74,9 @@ flutter:
     - assets/main_layout/map_selected.svg
     - assets/main_layout/profile_selected.svg
     - assets/main_layout/profile_unselected.svg
+    - assets/main_layout/map_selected_dark_mode.svg
+    - assets/profile/profile_img.png
+    - assets/profile/drop_icon.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see

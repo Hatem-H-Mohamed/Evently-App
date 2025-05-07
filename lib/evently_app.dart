@@ -21,7 +21,7 @@ class EventlyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: getLightTheme(),
           darkTheme: getDarkTheme(),
-          themeMode: ThemeMode.dark,
+          themeMode: ThemeMode.light,
           home: child,
           routes: {
             '/intro': (context) => const IntroScreen(),
@@ -33,7 +33,7 @@ class EventlyApp extends StatelessWidget {
           },
         );
       },
-      child: const IntroScreen(),
+      child: const SignInScreen(),
     );
   }
 }

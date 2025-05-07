@@ -11,4 +11,5 @@ class AppImages {
       "assets/onboarding_screen/social_media.png";
 
   static const String authForgetPass = "assets/Auth/forget_password.png";
+  static const String profileImage = "assets/profile/profile_img.png";
 }

@@ -3,6 +3,7 @@ import 'package:evently_app/core/app_assets/icons/App_icons.dart';
 import 'package:evently_app/core/app_assets/images/app_images.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
 import 'package:evently_app/core/widgets/custom_elevated_button.dart';
+import 'package:evently_app/core/widgets/cutom_animated_toggle_switch.dart';
 import 'package:evently_app/features/app_intro/view/widgets/intro_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,24 +46,8 @@ class _IntroScreenState extends State<IntroScreen> {
                       color: AppColorCommon.primary,
                     ),
                   ),
-                  AnimatedToggleSwitch<int>.rolling(
-                    indicatorSize: Size(30.w, 27.h),
-                    style: ToggleStyle(
-                      borderColor: AppColorCommon.primary,
-                      borderRadius: BorderRadius.circular(30.r),
-                      indicatorBorder: Border.fromBorderSide(
-                        BorderSide(width: 5.r, color: AppColorCommon.primary),
-                      ),
-                      indicatorBorderRadius: BorderRadius.circular(45.r),
-                      indicatorColor: Theme.of(context).scaffoldBackgroundColor,
-                    ),
-                    height: 31.h,
-                    spacing: 7.w,
-                    borderWidth: 3.r,
-                    current: 0,
-                    values: [0, 1],
-                    onChanged: (i) => {},
-                    iconList: [
+                  CutomAnimatedToggleSwitch(
+                    icons: [
                       SvgPicture.asset(
                         fit: BoxFit.fill,
                         AppIconsSvg.onboardingUsa,
@@ -76,6 +61,9 @@ class _IntroScreenState extends State<IntroScreen> {
                         height: 20.h,
                       ),
                     ],
+                    onTap: (i) {},
+                    onToggle: (i) {},
+                    current: 0,
                   ),
                 ],
               ),
@@ -91,24 +79,8 @@ class _IntroScreenState extends State<IntroScreen> {
                       color: AppColorCommon.primary,
                     ),
                   ),
-                  AnimatedToggleSwitch<int>.rolling(
-                    indicatorSize: Size(30.w, 27.h),
-                    style: ToggleStyle(
-                      borderColor: AppColorCommon.primary,
-                      borderRadius: BorderRadius.circular(30.r),
-                      indicatorBorder: Border.fromBorderSide(
-                        BorderSide(width: 5.r, color: AppColorCommon.primary),
-                      ),
-                      indicatorBorderRadius: BorderRadius.circular(45.r),
-                      indicatorColor: Theme.of(context).scaffoldBackgroundColor,
-                    ),
-                    height: 31.h,
-                    spacing: 7.w,
-                    borderWidth: 3.r,
-                    current: 0,
-                    values: [0, 1],
-                    onChanged: (i) => {},
-                    iconList: [
+                  CutomAnimatedToggleSwitch(
+                    icons: [
                       SvgPicture.asset(
                         fit: BoxFit.fill,
                         AppIconsSvg.onboardingSun,
@@ -126,6 +98,9 @@ class _IntroScreenState extends State<IntroScreen> {
                         height: 20.h,
                       ),
                     ],
+                    onTap: (i) {},
+                    onToggle: (i) {},
+                    current: 0,
                   ),
                 ],
               ),

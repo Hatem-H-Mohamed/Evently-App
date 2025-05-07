@@ -37,7 +37,10 @@ class _CustomBotNavBarState extends State<CustomBotNavBar> {
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  activeIcon: SvgPicture.asset(AppIconsSvg.mapSelected),
+                  activeIcon:
+                      Theme.of(context).brightness == Brightness.light
+                          ? SvgPicture.asset(AppIconsSvg.mapSelected)
+                          : SvgPicture.asset(AppIconsSvg.mapSelectedDarkMode),
                   icon: SvgPicture.asset(AppIconsSvg.mapUnselected),
                   label: 'Map',
                 ),
