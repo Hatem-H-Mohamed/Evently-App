@@ -31,16 +31,15 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: BlocBuilder<MainLayoutCubit, MainLayoutState>(
-        buildWhen: (previous, current) => current is MainLayoutNavigation,
         builder: (context, state) {
-          int i = 0;
-          if (state is MainLayoutNavigation) {
-            i = state.index;
-          }
+          int i = state.index;
           return screens[i];
         },
       ),
-      bottomNavigationBar: CustomBotNavBar(),
+      bottomNavigationBar: Directionality(
+        textDirection: TextDirection.ltr,
+        child: CustomBotNavBar(),
+      ),
     );
   }
 }

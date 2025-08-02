@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:intl/intl.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -126,13 +125,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ],
                         onChanged: (String? value) {
-                          print("Selected Language: $value");
                           setState(() {
                             selectedLanguage = value!;
                           });
-                          print(
-                            "Updated Language: $selectedLanguage ===============================",
-                          );
                           context.read<MainLayoutCubit>().changeLanguage(
                             selectedLanguage,
                           );

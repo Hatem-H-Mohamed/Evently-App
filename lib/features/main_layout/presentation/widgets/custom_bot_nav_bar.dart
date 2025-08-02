@@ -1,5 +1,6 @@
 import 'package:evently_app/core/app_assets/icons/app_icons.dart';
 import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
+import 'package:evently_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,8 +24,7 @@ class _CustomBotNavBarState extends State<CustomBotNavBar> {
         notchMargin: 3,
         child: BlocBuilder<MainLayoutCubit, MainLayoutState>(
           builder: (context, state) {
-            int index = 0;
-            if (state is MainLayoutNavigation) index = state.index;
+            int index = state.index;
             return BottomNavigationBar(
               currentIndex: index,
               onTap: (value) {
@@ -34,7 +34,7 @@ class _CustomBotNavBarState extends State<CustomBotNavBar> {
                 BottomNavigationBarItem(
                   activeIcon: SvgPicture.asset(AppIconsSvg.homeSelected),
                   icon: SvgPicture.asset(AppIconsSvg.homeUnselected),
-                  label: 'Home',
+                  label: S.of(context).Home,
                 ),
                 BottomNavigationBarItem(
                   activeIcon:
@@ -42,17 +42,17 @@ class _CustomBotNavBarState extends State<CustomBotNavBar> {
                           ? SvgPicture.asset(AppIconsSvg.mapSelected)
                           : SvgPicture.asset(AppIconsSvg.mapSelectedDarkMode),
                   icon: SvgPicture.asset(AppIconsSvg.mapUnselected),
-                  label: 'Map',
+                  label: S.of(context).Map,
                 ),
                 BottomNavigationBarItem(
                   activeIcon: SvgPicture.asset(AppIconsSvg.favSelected),
                   icon: SvgPicture.asset(AppIconsSvg.favUnselected),
-                  label: 'Love',
+                  label: S.of(context).Love,
                 ),
                 BottomNavigationBarItem(
                   activeIcon: SvgPicture.asset(AppIconsSvg.profileSelected),
                   icon: SvgPicture.asset(AppIconsSvg.profileUnselected),
-                  label: 'Profile',
+                  label: S.of(context).Profile,
                 ),
               ],
             );

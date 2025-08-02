@@ -21,4 +21,6 @@ class AppIconsSvg {
       "assets/main_layout/profile_unselected.svg";
 
   static const String dropListIcon = "assets/profile/drop_icon.svg";
+  static const String sun = "assets/home_screen/Sun.svg";
+  static const String all = "assets/home_screen/Compass.svg";
 }

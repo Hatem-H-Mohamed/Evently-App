@@ -22,12 +22,48 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "All": MessageLookupByLibrary.simpleMessage("All"),
+    "AlreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "Already Have Account ?",
+    ),
     "Arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "Birthday": MessageLookupByLibrary.simpleMessage("Birthday"),
+    "BookClub": MessageLookupByLibrary.simpleMessage("Book Club"),
+    "CreateAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
+    "CurrLang": MessageLookupByLibrary.simpleMessage("EN"),
     "Dark": MessageLookupByLibrary.simpleMessage("Dark"),
+    "Eating": MessageLookupByLibrary.simpleMessage("Eating"),
+    "Email": MessageLookupByLibrary.simpleMessage("Email"),
     "English": MessageLookupByLibrary.simpleMessage("English"),
+    "Exhibition": MessageLookupByLibrary.simpleMessage("Exhibition"),
+    "ForgetPassword": MessageLookupByLibrary.simpleMessage("Forget Password"),
+    "ForgotPassword": MessageLookupByLibrary.simpleMessage("Forget Password?"),
+    "Gaming": MessageLookupByLibrary.simpleMessage("Gaming"),
+    "Holiday": MessageLookupByLibrary.simpleMessage("Holiday"),
+    "Home": MessageLookupByLibrary.simpleMessage("Home"),
     "Language": MessageLookupByLibrary.simpleMessage("Language"),
     "Light": MessageLookupByLibrary.simpleMessage("Light"),
+    "Login": MessageLookupByLibrary.simpleMessage("Login"),
+    "LoginwithGoogle": MessageLookupByLibrary.simpleMessage(
+      "Login with Google",
+    ),
     "Logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "Love": MessageLookupByLibrary.simpleMessage("Love"),
+    "Map": MessageLookupByLibrary.simpleMessage("Map"),
+    "Meeting": MessageLookupByLibrary.simpleMessage("Meeting"),
+    "Name": MessageLookupByLibrary.simpleMessage("Name"),
+    "Or": MessageLookupByLibrary.simpleMessage("Or"),
+    "Password": MessageLookupByLibrary.simpleMessage("Password"),
+    "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "RePassword": MessageLookupByLibrary.simpleMessage("Re Password"),
+    "Register": MessageLookupByLibrary.simpleMessage("Register"),
+    "ResetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
+    "Sport": MessageLookupByLibrary.simpleMessage("Sport"),
     "Theme": MessageLookupByLibrary.simpleMessage("Theme"),
+    "WelcomeBack": MessageLookupByLibrary.simpleMessage("Welcome Back ✨"),
+    "Workshop": MessageLookupByLibrary.simpleMessage("Workshop"),
+    "noAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account?",
+    ),
   };
 }

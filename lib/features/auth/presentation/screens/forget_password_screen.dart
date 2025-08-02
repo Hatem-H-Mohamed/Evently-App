@@ -1,6 +1,7 @@
 import 'package:evently_app/core/app_assets/images/app_images.dart';
 import 'package:evently_app/core/widgets/custom_elevated_button.dart';
 import 'package:evently_app/features/auth/presentation/widgets/auth_field.dart';
+import 'package:evently_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,7 +16,11 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Forget Password'), centerTitle: true),
+      appBar: AppBar(
+        title: Text(S.of(context).ForgetPassword),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+      ),
       body: Form(
         child: SingleChildScrollView(
           child: Padding(
@@ -31,13 +36,13 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   ),
                   SizedBox(height: 24.h),
                   AuthField(
-                    hintText: "Email",
+                    hintText: S.of(context).Email,
                     isPassword: false,
                     prefixIcon: Icon(Icons.email),
                   ),
                   SizedBox(height: 16.h),
                   CustomElevatedButton(
-                    title: "Reset Password",
+                    title: S.of(context).ResetPassword,
                     onPressed: () {},
                   ),
                 ],

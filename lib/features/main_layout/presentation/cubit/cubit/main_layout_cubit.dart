@@ -4,26 +4,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'main_layout_state.dart';
 
 class MainLayoutCubit extends Cubit<MainLayoutState> {
-  MainLayoutCubit() : super(MainLayoutInitial());
+  MainLayoutCubit()
+    : super(
+        const MainLayoutState(index: 0, theme: ThemeMode.light, language: 'en'),
+      );
 
   void changeIndex(int index) {
-    emit(MainLayoutNavigation(index: index));
+    emit(state.copyWith(index: index));
   }
 
   void toggleTheme(String theme) {
-    if (theme == 'Light') {
-      emit(MainLayoutThemeChanged(theme: ThemeMode.light));
-    } else if (theme == 'Dark') {
-      emit(MainLayoutThemeChanged(theme: ThemeMode.dark));
-    }
+    emit(
+      state.copyWith(theme: theme == 'Dark' ? ThemeMode.dark : ThemeMode.light),
+    );
   }
 
   void changeLanguage(String language) {
-    print("called ================================");
-    if (language == 'en') {
-      emit(MainLayoutLanguageChanged(language: 'en'));
-    } else if (language == 'ar') {
-      emit(MainLayoutLanguageChanged(language: 'ar'));
-    }
+    emit(state.copyWith(language: language));
   }
 }

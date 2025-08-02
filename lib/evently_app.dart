@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:evently_app/core/app_theme/theme/dark_theme.dart';
 import 'package:evently_app/core/app_theme/theme/light_them.dart';
 import 'package:evently_app/features/app_intro/presentation/screens/intro_screen.dart';
@@ -23,17 +25,9 @@ class EventlyApp extends StatelessWidget {
       designSize: const Size(393, 841),
       builder: (_, child) {
         return BlocBuilder<MainLayoutCubit, MainLayoutState>(
-          buildWhen:
-              (previous, current) =>
-                  current is MainLayoutThemeChanged ||
-                  current is MainLayoutLanguageChanged,
           builder: (context, state) {
             return MaterialApp(
-              locale: Locale(
-                state is MainLayoutLanguageChanged
-                    ? state.language
-                    : Intl.getCurrentLocale(),
-              ),
+              locale: Locale(state.language),
 
               localizationsDelegates: [
                 S.delegate,
@@ -46,12 +40,7 @@ class EventlyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: getLightTheme(),
               darkTheme: getDarkTheme(),
-              themeMode:
-                  state is MainLayoutThemeChanged
-                      ? state.theme
-                      : Theme.of(context).brightness == Brightness.light
-                      ? ThemeMode.light
-                      : ThemeMode.dark,
+              themeMode: state.theme,
               home: child,
               routes: {
                 '/intro': (context) => const IntroScreen(),
@@ -65,7 +54,7 @@ class EventlyApp extends StatelessWidget {
           },
         );
       },
-      child: const MainLayoutScreen(),
+      child: const SignInScreen(),
     );
   }
 }

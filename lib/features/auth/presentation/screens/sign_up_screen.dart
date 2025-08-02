@@ -1,10 +1,14 @@
 import 'package:evently_app/core/app_assets/icons/App_icons.dart';
 import 'package:evently_app/core/app_assets/images/app_images.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
+import 'package:evently_app/core/helper/lang_helper.dart';
 import 'package:evently_app/core/widgets/custom_elevated_button.dart';
 import 'package:evently_app/core/widgets/cutom_animated_toggle_switch.dart';
 import 'package:evently_app/features/auth/presentation/widgets/auth_field.dart';
+import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
+import 'package:evently_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -16,11 +20,12 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  int currentIndex = LangHelper.isArabic() ? 1 : 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register"),
+        title: Text(S.of(context).Register),
         centerTitle: true,
         backgroundColor: Colors.transparent,
       ),
@@ -39,19 +44,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   Spacer(),
                   AuthField(
-                    hintText: "Name",
+                    hintText: S.of(context).Name,
                     isPassword: false,
                     prefixIcon: Icon(Icons.person),
                   ),
                   SizedBox(height: 16.h),
                   AuthField(
-                    hintText: "Email",
+                    hintText: S.of(context).Email,
                     isPassword: false,
                     prefixIcon: Icon(Icons.email),
                   ),
                   SizedBox(height: 16.h),
                   AuthField(
-                    hintText: "Password",
+                    hintText: S.of(context).Password,
                     isPassword: true,
                     prefixIcon: Icon(Icons.lock),
                     suffixIcon: IconButton(
@@ -61,7 +66,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   SizedBox(height: 16.h),
                   AuthField(
-                    hintText: "Re Password",
+                    hintText: S.of(context).RePassword,
                     isPassword: true,
                     prefixIcon: Icon(Icons.lock),
                     suffixIcon: IconButton(
@@ -71,7 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   Spacer(),
                   CustomElevatedButton(
-                    title: "Creat Account",
+                    title: S.of(context).CreateAccount,
                     onPressed: () {},
                   ),
                   Spacer(),
@@ -79,7 +84,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Already Have Account ? ",
+                        S.of(context).AlreadyHaveAccount,
                         style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w700,
@@ -91,7 +96,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           // Navigate to sign-up screen
                         },
                         child: Text(
-                          "Login",
+                          S.of(context).Login,
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w700,
@@ -103,26 +108,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                     ],
-                  ),
-                  Spacer(flex: 2),
-                  CutomAnimatedToggleSwitch(
-                    icons: [
-                      SvgPicture.asset(
-                        fit: BoxFit.fill,
-                        AppIconsSvg.onboardingUsa,
-                        width: 20.w,
-                        height: 20.h,
-                      ),
-                      SvgPicture.asset(
-                        fit: BoxFit.fill,
-                        AppIconsSvg.onboardingEg,
-                        width: 20.w,
-                        height: 20.h,
-                      ),
-                    ],
-                    onTap: (i) {},
-                    onToggle: (i) {},
-                    current: 0,
                   ),
                   Spacer(flex: 4),
                 ],

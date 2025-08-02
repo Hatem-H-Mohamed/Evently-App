@@ -1,10 +1,14 @@
 import 'package:evently_app/core/app_assets/icons/App_icons.dart';
 import 'package:evently_app/core/app_assets/images/app_images.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
+import 'package:evently_app/core/helper/lang_helper.dart';
 import 'package:evently_app/core/widgets/custom_elevated_button.dart';
 import 'package:evently_app/core/widgets/cutom_animated_toggle_switch.dart';
 import 'package:evently_app/features/auth/presentation/widgets/auth_field.dart';
+import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
+import 'package:evently_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -16,7 +20,7 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  int currentIndex = 0;
+  int currentIndex = LangHelper.isArabic() ? 1 : 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,13 +39,13 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   Spacer(),
                   AuthField(
-                    hintText: "Email",
+                    hintText: S.of(context).Email,
                     isPassword: false,
                     prefixIcon: Icon(Icons.email),
                   ),
                   SizedBox(height: 16.h),
                   AuthField(
-                    hintText: "Password",
+                    hintText: S.of(context).Password,
                     isPassword: true,
                     prefixIcon: Icon(Icons.lock),
                     suffixIcon: IconButton(
@@ -56,7 +60,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         Navigator.of(context).pushNamed("/forgetPassword");
                       },
                       child: Text(
-                        "Forgot Password?",
+                        S.of(context).ForgotPassword,
                         style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
@@ -67,7 +71,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                   ),
                   CustomElevatedButton(
-                    title: "Login",
+                    title: S.of(context).Login,
                     onPressed: () {
                       Navigator.of(context).pushNamed("/mainLayout");
                     },
@@ -77,7 +81,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't Have Account ? ",
+                        S.of(context).noAccount,
                         style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w700,
@@ -88,7 +92,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           Navigator.of(context).pushNamed("/signUp");
                         },
                         child: Text(
-                          "Create Account",
+                          S.of(context).CreateAccount,
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w700,
@@ -113,7 +117,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
                       Text(
-                        "Or",
+                        S.of(context).Or,
                         style: TextStyle(
                           color: AppColorCommon.primary,
                           fontWeight: FontWeight.w600,
@@ -142,7 +146,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     icon: SvgPicture.asset(AppIconsSvg.authGoogle),
                     label: Text(
-                      "Login with Google",
+                      S.of(context).LoginwithGoogle,
                       style: TextStyle(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.w700,
@@ -151,32 +155,38 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                   ),
                   Spacer(),
-                  CutomAnimatedToggleSwitch(
-                    icons: [
-                      SvgPicture.asset(
-                        fit: BoxFit.fill,
-                        AppIconsSvg.onboardingUsa,
-                        width: 20.w,
-                        height: 20.h,
-                      ),
-                      SvgPicture.asset(
-                        fit: BoxFit.fill,
-                        AppIconsSvg.onboardingEg,
-                        width: 20.w,
-                        height: 20.h,
-                      ),
-                    ],
-                    onTap: (i) {
-                      setState(() {
-                        currentIndex = i.values[0];
-                      });
-                    },
-                    onToggle: (i) {
-                      setState(() {
-                        currentIndex = i;
-                      });
-                    },
-                    current: currentIndex,
+                  Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: CutomAnimatedToggleSwitch(
+                      icons: [
+                        SvgPicture.asset(
+                          fit: BoxFit.fill,
+                          AppIconsSvg.onboardingUsa,
+                          width: 20.w,
+                          height: 20.h,
+                        ),
+                        SvgPicture.asset(
+                          fit: BoxFit.fill,
+                          AppIconsSvg.onboardingEg,
+                          width: 20.w,
+                          height: 20.h,
+                        ),
+                      ],
+                      onTap: (i) {
+                        setState(() {
+                          currentIndex = i.values[0];
+                        });
+                      },
+                      onToggle: (i) {
+                        setState(() {
+                          currentIndex = i;
+                        });
+                        context.read<MainLayoutCubit>().changeLanguage(
+                          currentIndex == 0 ? "en" : "ar",
+                        );
+                      },
+                      current: currentIndex,
+                    ),
                   ),
                   Spacer(flex: 4),
                 ],

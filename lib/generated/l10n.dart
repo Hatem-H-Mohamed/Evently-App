@@ -88,6 +88,196 @@ class S {
   String get Logout {
     return Intl.message('Logout', name: 'Logout', desc: '', args: []);
   }
+
+  /// `Home`
+  String get Home {
+    return Intl.message('Home', name: 'Home', desc: '', args: []);
+  }
+
+  /// `Map`
+  String get Map {
+    return Intl.message('Map', name: 'Map', desc: '', args: []);
+  }
+
+  /// `Love`
+  String get Love {
+    return Intl.message('Love', name: 'Love', desc: '', args: []);
+  }
+
+  /// `Profile`
+  String get Profile {
+    return Intl.message('Profile', name: 'Profile', desc: '', args: []);
+  }
+
+  /// `Email`
+  String get Email {
+    return Intl.message('Email', name: 'Email', desc: '', args: []);
+  }
+
+  /// `Password`
+  String get Password {
+    return Intl.message('Password', name: 'Password', desc: '', args: []);
+  }
+
+  /// `Forget Password?`
+  String get ForgotPassword {
+    return Intl.message(
+      'Forget Password?',
+      name: 'ForgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get Login {
+    return Intl.message('Login', name: 'Login', desc: '', args: []);
+  }
+
+  /// `Don't have an account?`
+  String get noAccount {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'noAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Account`
+  String get CreateAccount {
+    return Intl.message(
+      'Create Account',
+      name: 'CreateAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Or`
+  String get Or {
+    return Intl.message('Or', name: 'Or', desc: '', args: []);
+  }
+
+  /// `Login with Google`
+  String get LoginwithGoogle {
+    return Intl.message(
+      'Login with Google',
+      name: 'LoginwithGoogle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get Register {
+    return Intl.message('Register', name: 'Register', desc: '', args: []);
+  }
+
+  /// `Name`
+  String get Name {
+    return Intl.message('Name', name: 'Name', desc: '', args: []);
+  }
+
+  /// `Re Password`
+  String get RePassword {
+    return Intl.message('Re Password', name: 'RePassword', desc: '', args: []);
+  }
+
+  /// `Already Have Account ?`
+  String get AlreadyHaveAccount {
+    return Intl.message(
+      'Already Have Account ?',
+      name: 'AlreadyHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get ResetPassword {
+    return Intl.message(
+      'Reset Password',
+      name: 'ResetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forget Password`
+  String get ForgetPassword {
+    return Intl.message(
+      'Forget Password',
+      name: 'ForgetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome Back ✨`
+  String get WelcomeBack {
+    return Intl.message(
+      'Welcome Back ✨',
+      name: 'WelcomeBack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EN`
+  String get CurrLang {
+    return Intl.message('EN', name: 'CurrLang', desc: '', args: []);
+  }
+
+  /// `All`
+  String get All {
+    return Intl.message('All', name: 'All', desc: '', args: []);
+  }
+
+  /// `Sport`
+  String get Sport {
+    return Intl.message('Sport', name: 'Sport', desc: '', args: []);
+  }
+
+  /// `Birthday`
+  String get Birthday {
+    return Intl.message('Birthday', name: 'Birthday', desc: '', args: []);
+  }
+
+  /// `Meeting`
+  String get Meeting {
+    return Intl.message('Meeting', name: 'Meeting', desc: '', args: []);
+  }
+
+  /// `Gaming`
+  String get Gaming {
+    return Intl.message('Gaming', name: 'Gaming', desc: '', args: []);
+  }
+
+  /// `Eating`
+  String get Eating {
+    return Intl.message('Eating', name: 'Eating', desc: '', args: []);
+  }
+
+  /// `Holiday`
+  String get Holiday {
+    return Intl.message('Holiday', name: 'Holiday', desc: '', args: []);
+  }
+
+  /// `Exhibition`
+  String get Exhibition {
+    return Intl.message('Exhibition', name: 'Exhibition', desc: '', args: []);
+  }
+
+  /// `Workshop`
+  String get Workshop {
+    return Intl.message('Workshop', name: 'Workshop', desc: '', args: []);
+  }
+
+  /// `Book Club`
+  String get BookClub {
+    return Intl.message('Book Club', name: 'BookClub', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

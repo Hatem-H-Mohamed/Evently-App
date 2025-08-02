@@ -22,12 +22,52 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "All": MessageLookupByLibrary.simpleMessage("الكل"),
+    "AlreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
+      " هل لديك حساب بالفعل؟",
+    ),
     "Arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "Birthday": MessageLookupByLibrary.simpleMessage("عيد ميلاد"),
+    "BookClub": MessageLookupByLibrary.simpleMessage("نادي الكتاب"),
+    "CreateAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "CurrLang": MessageLookupByLibrary.simpleMessage("AR"),
     "Dark": MessageLookupByLibrary.simpleMessage("داكن"),
+    "Eating": MessageLookupByLibrary.simpleMessage("تناول الطعام"),
+    "Email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "English": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
+    "Exhibition": MessageLookupByLibrary.simpleMessage("معرض"),
+    "ForgetPassword": MessageLookupByLibrary.simpleMessage(
+      "تعيين كلمة مرور جديدة",
+    ),
+    "ForgotPassword": MessageLookupByLibrary.simpleMessage(
+      "هل نسيت كلمة المرور؟",
+    ),
+    "Gaming": MessageLookupByLibrary.simpleMessage("ألعاب"),
+    "Holiday": MessageLookupByLibrary.simpleMessage("إجازة"),
+    "Home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "Language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "Light": MessageLookupByLibrary.simpleMessage("فاتح"),
+    "Login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "LoginwithGoogle": MessageLookupByLibrary.simpleMessage(
+      "تسجيل الدخول باستخدام جوجل",
+    ),
     "Logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
-    "Theme": MessageLookupByLibrary.simpleMessage("السمة"),
+    "Love": MessageLookupByLibrary.simpleMessage("المفضلة"),
+    "Map": MessageLookupByLibrary.simpleMessage("الخريطة"),
+    "Meeting": MessageLookupByLibrary.simpleMessage("اجتماع"),
+    "Name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "Or": MessageLookupByLibrary.simpleMessage("أو"),
+    "Password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "Profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+    "RePassword": MessageLookupByLibrary.simpleMessage("إعادة كلمة المرور"),
+    "Register": MessageLookupByLibrary.simpleMessage("تسجيل"),
+    "ResetPassword": MessageLookupByLibrary.simpleMessage(
+      "إعادة تعيين كلمة المرور",
+    ),
+    "Sport": MessageLookupByLibrary.simpleMessage("رياضة"),
+    "Theme": MessageLookupByLibrary.simpleMessage("الثيم"),
+    "WelcomeBack": MessageLookupByLibrary.simpleMessage("مرحبا بك ✨"),
+    "Workshop": MessageLookupByLibrary.simpleMessage("ورشة عمل"),
+    "noAccount": MessageLookupByLibrary.simpleMessage(" ليس لديك حساب؟"),
   };
 }
