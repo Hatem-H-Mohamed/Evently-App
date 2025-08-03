@@ -14,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:intl/intl.dart';
 
 class EventlyApp extends StatelessWidget {
   const EventlyApp({super.key});
@@ -22,7 +21,7 @@ class EventlyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(393, 841),
+      designSize: const Size(393, 820),
       builder: (_, child) {
         return BlocBuilder<MainLayoutCubit, MainLayoutState>(
           builder: (context, state) {

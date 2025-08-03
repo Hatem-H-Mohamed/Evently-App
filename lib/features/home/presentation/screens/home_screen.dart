@@ -1,8 +1,11 @@
+import 'dart:ffi';
+
 import 'package:evently_app/core/app_assets/icons/app_icons.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_dark.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_light.dart';
 import 'package:evently_app/core/helper/lang_helper.dart';
+import 'package:evently_app/core/widgets/event_card.dart';
 import 'package:evently_app/features/home/presentation/widgets/cat_taps.dart';
 import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
 import 'package:evently_app/generated/l10n.dart';
@@ -124,6 +127,24 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  child: EventCard(
+                    imageID: 2,
+                    title: 'Birthday Party',
+                    date: '12 Nov',
+                  ),
+                );
+              },
             ),
           ),
         ],

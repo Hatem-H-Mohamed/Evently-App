@@ -2,6 +2,7 @@ import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_dark.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_light.dart';
 import 'package:evently_app/core/app_theme/theme/elevated_button_them.dart';
+import 'package:evently_app/core/app_theme/theme/text_selection_them.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -56,4 +57,5 @@ ThemeData getDarkTheme() => ThemeData(
       side: BorderSide(color: AppColorLight.background, width: 4.w),
     ),
   ),
+  textSelectionTheme: getTextSelectionTheme(),
 );
