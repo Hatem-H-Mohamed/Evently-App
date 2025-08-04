@@ -1,10 +1,13 @@
 import 'package:evently_app/core/app_assets/icons/App_icons.dart';
 import 'package:evently_app/core/app_assets/images/app_images.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
+import 'package:evently_app/core/helper/lang_helper.dart';
 import 'package:evently_app/core/widgets/custom_elevated_button.dart';
 import 'package:evently_app/core/widgets/cutom_animated_toggle_switch.dart';
 import 'package:evently_app/features/app_intro/presentation/widgets/intro_component.dart';
+import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -16,6 +19,8 @@ class IntroScreen extends StatefulWidget {
 }
 
 class _IntroScreenState extends State<IntroScreen> {
+  int currentIndexLang = LangHelper.isArabic() ? 1 : 0;
+  int currentIndexTheme = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,9 +65,20 @@ class _IntroScreenState extends State<IntroScreen> {
                         height: 20.h,
                       ),
                     ],
-                    onTap: (i) {},
-                    onToggle: (i) {},
-                    current: 0,
+                    onTap: (i) {
+                      setState(() {
+                        currentIndexLang = i.values[0];
+                      });
+                    },
+                    onToggle: (i) {
+                      setState(() {
+                        currentIndexLang = i;
+                      });
+                      context.read<MainLayoutCubit>().changeLanguage(
+                        currentIndexLang == 0 ? "en" : "ar",
+                      );
+                    },
+                    current: currentIndexLang,
                   ),
                 ],
               ),
@@ -97,13 +113,24 @@ class _IntroScreenState extends State<IntroScreen> {
                         height: 20.h,
                       ),
                     ],
-                    onTap: (i) {},
-                    onToggle: (i) {},
-                    current: 0,
+                    onTap: (i) {
+                      setState(() {
+                        currentIndexTheme = i.values[0];
+                      });
+                    },
+                    onToggle: (i) {
+                      setState(() {
+                        currentIndexTheme = i;
+                      });
+                      context.read<MainLayoutCubit>().toggleTheme(
+                        currentIndexTheme == 0 ? 'Light' : 'Dark',
+                      );
+                    },
+                    current: currentIndexTheme,
                   ),
                 ],
               ),
-              SizedBox(height: 28.h),
+              SizedBox(height: 15.h),
               CustomElevatedButton(
                 title: "Let's Start",
                 onPressed: () {

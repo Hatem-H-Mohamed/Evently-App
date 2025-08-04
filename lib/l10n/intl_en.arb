@@ -35,5 +35,9 @@
     "Holiday": "Holiday",
     "Exhibition": "Exhibition",
     "Workshop": "Workshop",
-    "BookClub": "Book Club"
+    "BookClub": "Book Club",
+    "Loading" : "Loading...",
+    "Success" : "Welcome!",
+    "ResetEmailSuccess" : "Check your email to reset password",
+    "TryAgain" : "Try Again :<"
 }   

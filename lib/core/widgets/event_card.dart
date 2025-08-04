@@ -69,7 +69,7 @@ class _EventCardState extends State<EventCard> {
             left: 8.w,
             child: Container(
               width: 45.w,
-              height: 47.h,
+              height: 49.h,
               decoration: BoxDecoration(
                 color:
                     Theme.of(context).brightness == Brightness.light
@@ -104,55 +104,58 @@ class _EventCardState extends State<EventCard> {
             bottom: 8.h,
             left: 8.w,
             right: 8.w,
-            child: Container(
-              width: 345.w,
-              height: 40.h,
-              decoration: BoxDecoration(
-                color:
-                    Theme.of(context).brightness == Brightness.light
-                        ? AppColorLight.background
-                        : AppColorDark.background,
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.w),
-                    child: Text(
-                      'Birthday Party',
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.bold,
-                        color:
-                            Theme.of(context).brightness == Brightness.light
-                                ? AppColorCommon.primary
-                                : AppColorLight.background,
+            child: Directionality(
+              textDirection: TextDirection.ltr,
+              child: Container(
+                width: 345.w,
+                height: 40.h,
+                decoration: BoxDecoration(
+                  color:
+                      Theme.of(context).brightness == Brightness.light
+                          ? AppColorLight.background
+                          : AppColorDark.background,
+                  borderRadius: BorderRadius.circular(8.r),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.w),
+                      child: Text(
+                        'Birthday Party',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.bold,
+                          color:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? AppColorCommon.primary
+                                  : AppColorLight.background,
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.w),
-                    child: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          isFavorite = !isFavorite;
-                        });
-                      },
-                      icon:
-                          isFavorite
-                              ? Icon(
-                                Icons.favorite,
-                                color: AppColorCommon.primary,
-                              )
-                              : Icon(
-                                Icons.favorite_border,
-                                color: AppColorCommon.primary,
-                              ),
-                      color: AppColorCommon.primary,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.w),
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            isFavorite = !isFavorite;
+                          });
+                        },
+                        icon:
+                            isFavorite
+                                ? Icon(
+                                  Icons.favorite,
+                                  color: AppColorCommon.primary,
+                                )
+                                : Icon(
+                                  Icons.favorite_border,
+                                  color: AppColorCommon.primary,
+                                ),
+                        color: AppColorCommon.primary,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

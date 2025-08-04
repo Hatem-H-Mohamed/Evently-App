@@ -53,7 +53,7 @@ class EventlyApp extends StatelessWidget {
           },
         );
       },
-      child: const SignInScreen(),
+      child: const IntroScreen(),
     );
   }
 }

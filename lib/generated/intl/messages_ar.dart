@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "Language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "Light": MessageLookupByLibrary.simpleMessage("فاتح"),
+    "Loading": MessageLookupByLibrary.simpleMessage("جاري التحميل"),
     "Login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "LoginwithGoogle": MessageLookupByLibrary.simpleMessage(
       "تسجيل الدخول باستخدام جوجل",
@@ -61,11 +62,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "Profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "RePassword": MessageLookupByLibrary.simpleMessage("إعادة كلمة المرور"),
     "Register": MessageLookupByLibrary.simpleMessage("تسجيل"),
+    "ResetEmailSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم ارسال رابط استعادة كلمة المرور الى بريدك الالكتروني",
+    ),
     "ResetPassword": MessageLookupByLibrary.simpleMessage(
       "إعادة تعيين كلمة المرور",
     ),
     "Sport": MessageLookupByLibrary.simpleMessage("رياضة"),
+    "Success": MessageLookupByLibrary.simpleMessage("مرحبا بك !"),
     "Theme": MessageLookupByLibrary.simpleMessage("الثيم"),
+    "TryAgain": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى :<"),
     "WelcomeBack": MessageLookupByLibrary.simpleMessage("مرحبا بك ✨"),
     "Workshop": MessageLookupByLibrary.simpleMessage("ورشة عمل"),
     "noAccount": MessageLookupByLibrary.simpleMessage(" ليس لديك حساب؟"),

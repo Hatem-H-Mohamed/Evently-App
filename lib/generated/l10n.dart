@@ -278,6 +278,31 @@ class S {
   String get BookClub {
     return Intl.message('Book Club', name: 'BookClub', desc: '', args: []);
   }
+
+  /// `Loading...`
+  String get Loading {
+    return Intl.message('Loading...', name: 'Loading', desc: '', args: []);
+  }
+
+  /// `Welcome!`
+  String get Success {
+    return Intl.message('Welcome!', name: 'Success', desc: '', args: []);
+  }
+
+  /// `Check your email to reset password`
+  String get ResetEmailSuccess {
+    return Intl.message(
+      'Check your email to reset password',
+      name: 'ResetEmailSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try Again :<`
+  String get TryAgain {
+    return Intl.message('Try Again :<', name: 'TryAgain', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

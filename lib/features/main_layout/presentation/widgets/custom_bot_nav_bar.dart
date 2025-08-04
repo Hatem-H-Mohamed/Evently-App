@@ -25,36 +25,45 @@ class _CustomBotNavBarState extends State<CustomBotNavBar> {
         child: BlocBuilder<MainLayoutCubit, MainLayoutState>(
           builder: (context, state) {
             int index = state.index;
-            return BottomNavigationBar(
-              currentIndex: index,
-              onTap: (value) {
-                context.read<MainLayoutCubit>().changeIndex(value);
-              },
-              items: [
-                BottomNavigationBarItem(
-                  activeIcon: SvgPicture.asset(AppIconsSvg.homeSelected),
-                  icon: SvgPicture.asset(AppIconsSvg.homeUnselected),
-                  label: S.of(context).Home,
-                ),
-                BottomNavigationBarItem(
-                  activeIcon:
-                      Theme.of(context).brightness == Brightness.light
-                          ? SvgPicture.asset(AppIconsSvg.mapSelected)
-                          : SvgPicture.asset(AppIconsSvg.mapSelectedDarkMode),
-                  icon: SvgPicture.asset(AppIconsSvg.mapUnselected),
-                  label: S.of(context).Map,
-                ),
-                BottomNavigationBarItem(
-                  activeIcon: SvgPicture.asset(AppIconsSvg.favSelected),
-                  icon: SvgPicture.asset(AppIconsSvg.favUnselected),
-                  label: S.of(context).Love,
-                ),
-                BottomNavigationBarItem(
-                  activeIcon: SvgPicture.asset(AppIconsSvg.profileSelected),
-                  icon: SvgPicture.asset(AppIconsSvg.profileUnselected),
-                  label: S.of(context).Profile,
-                ),
-              ],
+            return Theme(
+              data: Theme.of(context).copyWith(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+              ),
+              child: BottomNavigationBar(
+                enableFeedback: false,
+                useLegacyColorScheme: false,
+                currentIndex: index,
+                onTap: (value) {
+                  context.read<MainLayoutCubit>().changeIndex(value);
+                },
+                items: [
+                  BottomNavigationBarItem(
+                    activeIcon: SvgPicture.asset(AppIconsSvg.homeSelected),
+                    icon: SvgPicture.asset(AppIconsSvg.homeUnselected),
+                    label: S.of(context).Home,
+                  ),
+                  BottomNavigationBarItem(
+                    activeIcon:
+                        Theme.of(context).brightness == Brightness.light
+                            ? SvgPicture.asset(AppIconsSvg.mapSelected)
+                            : SvgPicture.asset(AppIconsSvg.mapSelectedDarkMode),
+                    icon: SvgPicture.asset(AppIconsSvg.mapUnselected),
+                    label: S.of(context).Map,
+                  ),
+                  BottomNavigationBarItem(
+                    activeIcon: SvgPicture.asset(AppIconsSvg.favSelected),
+                    icon: SvgPicture.asset(AppIconsSvg.favUnselected),
+                    label: S.of(context).Love,
+                  ),
+                  BottomNavigationBarItem(
+                    activeIcon: SvgPicture.asset(AppIconsSvg.profileSelected),
+                    icon: SvgPicture.asset(AppIconsSvg.profileUnselected),
+                    label: S.of(context).Profile,
+                  ),
+                ],
+              ),
             );
           },
         ),

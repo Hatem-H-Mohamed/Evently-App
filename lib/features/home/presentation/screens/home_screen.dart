@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:evently_app/core/app_assets/icons/app_icons.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_dark.dart';
@@ -23,7 +21,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: 185.h,
+            height: 190.h,
             width: double.infinity,
             decoration: BoxDecoration(
               color:
@@ -131,15 +129,12 @@ class HomeScreen extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 10,
+              itemCount: 5,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
-                  ),
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                   child: EventCard(
-                    imageID: 2,
+                    imageID: index,
                     title: 'Birthday Party',
                     date: '12 Nov',
                   ),

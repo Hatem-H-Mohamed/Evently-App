@@ -1,4 +1,5 @@
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
+import 'package:evently_app/core/app_theme/app_color/app_color_dark.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_light.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +22,9 @@ class FavoriteScreen extends StatelessWidget {
                 ),
               ),
               backgroundColor: WidgetStateProperty.all(
-                AppColorLight.background,
+                Theme.of(context).brightness == Brightness.light
+                    ? AppColorLight.background
+                    : AppColorDark.background,
               ),
               elevation: WidgetStateProperty.all(0),
               hintText: 'Search for events',

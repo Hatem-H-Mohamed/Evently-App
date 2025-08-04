@@ -6,6 +6,7 @@ class AuthField extends StatelessWidget {
   final bool isPassword;
   final Icon? prefixIcon;
   final IconButton? suffixIcon;
+  final String? Function(String?)? validator;
   const AuthField({
     super.key,
     required this.hintText,
@@ -13,6 +14,7 @@ class AuthField extends StatelessWidget {
     this.isPassword = false,
     this.prefixIcon,
     this.suffixIcon,
+    this.validator,
   });
 
   @override
@@ -20,7 +22,8 @@ class AuthField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      validator: (value) => value!.isEmpty ? "Enter $hintText" : null,
+      validator:
+          validator ?? (value) => value!.isEmpty ? "Enter $hintText" : null,
       obscureText: isPassword,
       decoration: InputDecoration(
         hintText: hintText,

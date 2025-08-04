@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Home": MessageLookupByLibrary.simpleMessage("Home"),
     "Language": MessageLookupByLibrary.simpleMessage("Language"),
     "Light": MessageLookupByLibrary.simpleMessage("Light"),
+    "Loading": MessageLookupByLibrary.simpleMessage("Loading..."),
     "Login": MessageLookupByLibrary.simpleMessage("Login"),
     "LoginwithGoogle": MessageLookupByLibrary.simpleMessage(
       "Login with Google",
@@ -57,9 +58,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "RePassword": MessageLookupByLibrary.simpleMessage("Re Password"),
     "Register": MessageLookupByLibrary.simpleMessage("Register"),
+    "ResetEmailSuccess": MessageLookupByLibrary.simpleMessage(
+      "Check your email to reset password",
+    ),
     "ResetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
     "Sport": MessageLookupByLibrary.simpleMessage("Sport"),
+    "Success": MessageLookupByLibrary.simpleMessage("Welcome!"),
     "Theme": MessageLookupByLibrary.simpleMessage("Theme"),
+    "TryAgain": MessageLookupByLibrary.simpleMessage("Try Again :<"),
     "WelcomeBack": MessageLookupByLibrary.simpleMessage("Welcome Back ✨"),
     "Workshop": MessageLookupByLibrary.simpleMessage("Workshop"),
     "noAccount": MessageLookupByLibrary.simpleMessage(
