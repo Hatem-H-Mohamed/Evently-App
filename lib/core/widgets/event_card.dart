@@ -2,6 +2,7 @@ import 'package:evently_app/core/app_assets/images/app_images.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_dark.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_light.dart';
+import 'package:evently_app/core/consts/category_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,29 +22,6 @@ class EventCard extends StatefulWidget {
 }
 
 class _EventCardState extends State<EventCard> {
-  final List<String> categoriesLight = [
-    CategoryImagesLight.sport,
-    CategoryImagesLight.birthday,
-    CategoryImagesLight.meeting,
-    CategoryImagesLight.gaming,
-    CategoryImagesLight.eating,
-    CategoryImagesLight.holiday,
-    CategoryImagesLight.exhibition,
-    CategoryImagesLight.workshop,
-    CategoryImagesLight.bookClub,
-  ];
-  final List<String> categoriesDark = [
-    CategoryImagesDark.sport,
-    CategoryImagesDark.birthday,
-    CategoryImagesDark.meeting,
-    CategoryImagesDark.gaming,
-    CategoryImagesDark.eating,
-    CategoryImagesDark.holiday,
-    CategoryImagesDark.exhibition,
-    CategoryImagesDark.workshop,
-    CategoryImagesDark.bookClub,
-  ];
-
   bool isFavorite = false;
 
   @override
@@ -59,8 +37,8 @@ class _EventCardState extends State<EventCard> {
             borderRadius: BorderRadius.circular(16.r),
             child: Image.asset(
               Theme.of(context).brightness == Brightness.light
-                  ? categoriesLight[widget.imageID]
-                  : categoriesDark[widget.imageID],
+                  ? CategoryList.categoriesLight[widget.imageID]
+                  : CategoryList.categoriesDark[widget.imageID],
               fit: BoxFit.cover,
             ),
           ),

@@ -2,7 +2,6 @@ import 'package:evently_app/core/app_assets/images/app_images.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
 import 'package:evently_app/core/helper/lang_helper.dart';
 import 'package:evently_app/core/widgets/custom_elevated_button.dart';
-import 'package:evently_app/features/auth/domain/usecases/sign_up_email.dart';
 import 'package:evently_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:evently_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:evently_app/generated/l10n.dart';

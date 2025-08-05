@@ -45,6 +45,7 @@ dependencies:
   google_fonts: ^6.2.1
   google_sign_in: ^6.1.6
   injectable: ^2.5.1
+  shared_preferences: ^2.5.3
   smooth_page_indicator: ^1.2.1
   supabase_flutter: ^2.9.1
 

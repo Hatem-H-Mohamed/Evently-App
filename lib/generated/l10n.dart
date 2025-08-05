@@ -303,6 +303,91 @@ class S {
   String get TryAgain {
     return Intl.message('Try Again :<', name: 'TryAgain', desc: '', args: []);
   }
+
+  /// `Personalize Your Experience`
+  String get Personalize {
+    return Intl.message(
+      'Personalize Your Experience',
+      name: 'Personalize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find Events That Inspire You`
+  String get Find {
+    return Intl.message(
+      'Find Events That Inspire You',
+      name: 'Find',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.`
+  String get Choose {
+    return Intl.message(
+      'Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.',
+      name: 'Choose',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let's Start`
+  String get Let {
+    return Intl.message('Let\'s Start', name: 'Let', desc: '', args: []);
+  }
+
+  /// `Dive into a world of events crafted to fit your unique interests. Whether you're into live music, art  , professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.`
+  String get Dive {
+    return Intl.message(
+      'Dive into a world of events crafted to fit your unique interests. Whether you\'re into live music, art  , professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.',
+      name: 'Dive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Effortless Event Planning`
+  String get Effortless {
+    return Intl.message(
+      'Effortless Event Planning',
+      name: 'Effortless',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we’ve got you covered. Plan with ease and focus on what matters – creating an unforgettable experience for you and your guests.`
+  String get Take {
+    return Intl.message(
+      'Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we’ve got you covered. Plan with ease and focus on what matters – creating an unforgettable experience for you and your guests.',
+      name: 'Take',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connect with Friends & Share Moments`
+  String get Connect {
+    return Intl.message(
+      'Connect with Friends & Share Moments',
+      name: 'Connect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.`
+  String get Make {
+    return Intl.message(
+      'Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.',
+      name: 'Make',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -23,4 +23,8 @@ class AppIconsSvg {
   static const String dropListIcon = "assets/profile/drop_icon.svg";
   static const String sun = "assets/home_screen/Sun.svg";
   static const String all = "assets/home_screen/Compass.svg";
+  static const String location = "assets/create_event/location.svg";
+  static const String calender = "assets/create_event/calendar_days.svg";
+  static const String clock = "assets/create_event/clock.svg";
+  static const String noteEdit = "assets/create_event/note_edit.svg";
 }

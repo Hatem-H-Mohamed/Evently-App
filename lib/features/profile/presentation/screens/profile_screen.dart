@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -140,7 +141,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: Text(S.of(context).Arabic),
                             ),
                           ],
-                          onChanged: (String? value) {
+                          onChanged: (String? value) async {
                             setState(() {
                               selectedLanguage = value!;
                             });
@@ -186,7 +187,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: Text(S.of(context).Dark),
                             ),
                           ],
-                          onChanged: (String? value) {
+                          onChanged: (String? value) async {
                             setState(() {
                               selectedTheme = value!;
                             });
@@ -212,6 +213,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         onPressed: () {
                           context.read<AuthCubit>().signUserOut();
+                          context.read<MainLayoutCubit>().resetState();
                         },
                         icon: Icon(Icons.logout),
                         label: Text(S.of(context).Logout),

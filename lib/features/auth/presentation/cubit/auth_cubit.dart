@@ -6,6 +6,7 @@ import 'package:evently_app/features/auth/domain/usecases/sign_up_email.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'auth_state.dart';
 
@@ -29,10 +30,13 @@ class AuthCubit extends Cubit<AuthState> {
     final res = await signInEmail.call(
       SignInEmailParams(email: email, password: password),
     );
-    res.fold(
-      (failure) => emit(SignInError(message: failure.message)),
-      (uid) => emit(SignInSuccess(userId: uid)),
-    );
+    res.fold((failure) => emit(SignInError(message: failure.message)), (
+      uid,
+    ) async {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLogged', true);
+      emit(SignInSuccess(userId: uid));
+    });
   }
 
   void signUpwithEmail(String name, String email, String password) async {
@@ -41,20 +45,26 @@ class AuthCubit extends Cubit<AuthState> {
       SignUpEmailParams(name: name, email: email, password: password),
     );
 
-    res.fold(
-      (failure) => emit(SignUpError(message: failure.message)),
-      (uid) => emit(SignUpSuccess(userId: uid)),
-    );
+    res.fold((failure) => emit(SignUpError(message: failure.message)), (
+      uid,
+    ) async {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLogged', true);
+      emit(SignUpSuccess(userId: uid));
+    });
   }
 
   void signInWithGoogle() async {
     emit(SignInLoading());
     final res = await signInGoogle.call(null);
 
-    res.fold(
-      (failure) => emit(SignInError(message: failure.message)),
-      (uid) => emit(SignInSuccess(userId: uid)),
-    );
+    res.fold((failure) => emit(SignInError(message: failure.message)), (
+      uid,
+    ) async {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLogged', true);
+      emit(SignInSuccess(userId: uid));
+    });
   }
 
   void resetPass(String email) async {
@@ -71,9 +81,12 @@ class AuthCubit extends Cubit<AuthState> {
     emit(SignOutLoading());
     final res = await signOut.call(null);
 
-    res.fold(
-      (failure) => emit(SignOutError(message: failure.message)),
-      (uid) => emit(SignOutSuccess()),
-    );
+    res.fold((failure) => emit(SignOutError(message: failure.message)), (
+      uid,
+    ) async {
+      emit(SignOutSuccess());
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLogged', false);
+    });
   }
 }

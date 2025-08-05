@@ -120,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 12.h),
-                      CatTaps(),
+                      CatTaps(tapIndex: 0),
                     ],
                   ),
                 ],

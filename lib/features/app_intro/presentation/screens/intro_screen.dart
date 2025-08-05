@@ -6,10 +6,12 @@ import 'package:evently_app/core/widgets/custom_elevated_button.dart';
 import 'package:evently_app/core/widgets/cutom_animated_toggle_switch.dart';
 import 'package:evently_app/features/app_intro/presentation/widgets/intro_component.dart';
 import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
+import 'package:evently_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
@@ -21,6 +23,12 @@ class IntroScreen extends StatefulWidget {
 class _IntroScreenState extends State<IntroScreen> {
   int currentIndexLang = LangHelper.isArabic() ? 1 : 0;
   int currentIndexTheme = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,9 +41,8 @@ class _IntroScreenState extends State<IntroScreen> {
               Image.asset(AppImages.onboardingLogo, height: 50.h, width: 157.w),
               SizedBox(height: 28.h),
               IntroComponent(
-                title: "Personalize Your Experience",
-                description:
-                    "Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.",
+                title: S.of(context).Personalize,
+                description: S.of(context).Choose,
                 image: AppImages.onboardingImage0,
               ),
               SizedBox(height: 28.h),
@@ -43,7 +50,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Language",
+                    S.of(context).Language,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
@@ -87,7 +94,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Theme",
+                    S.of(context).Theme,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
@@ -132,7 +139,7 @@ class _IntroScreenState extends State<IntroScreen> {
               ),
               SizedBox(height: 15.h),
               CustomElevatedButton(
-                title: "Let's Start",
+                title: S.of(context).Let,
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/onboarding');
                 },

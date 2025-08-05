@@ -7,6 +7,7 @@ import 'package:evently_app/features/app_intro/presentation/screens/onboarding_s
 import 'package:evently_app/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:evently_app/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:evently_app/features/auth/presentation/screens/sign_up_screen.dart';
+import 'package:evently_app/features/events/presentation/screens/create_event_screen.dart';
 import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
 import 'package:evently_app/features/main_layout/presentation/screens/main_layout_screen.dart';
 import 'package:evently_app/generated/l10n.dart';
@@ -16,7 +17,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class EventlyApp extends StatelessWidget {
-  const EventlyApp({super.key});
+  final bool isFirst;
+  final bool isLogged;
+  final String lang;
+  final String theme;
+  const EventlyApp({
+    super.key,
+    required this.isFirst,
+    required this.isLogged,
+    required this.lang,
+    required this.theme,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,12 +59,18 @@ class EventlyApp extends StatelessWidget {
                 '/signUp': (context) => const SignUpScreen(),
                 '/forgetPassword': (context) => const ForgetPasswordScreen(),
                 '/mainLayout': (context) => const MainLayoutScreen(),
+                '/createEvent': (context) => const CreateEventScreen(),
               },
             );
           },
         );
       },
-      child: const IntroScreen(),
+      child:
+          isFirst
+              ? const IntroScreen()
+              : isLogged
+              ? const MainLayoutScreen()
+              : const SignInScreen(),
     );
   }
 }
