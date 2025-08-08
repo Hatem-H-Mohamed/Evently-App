@@ -1,10 +1,10 @@
-import 'package:evently_app/core/app_assets/images/app_images.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_dark.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_light.dart';
 import 'package:evently_app/core/consts/category_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart' as it;
 
 class EventCard extends StatefulWidget {
   final int imageID;
@@ -59,7 +59,9 @@ class _EventCardState extends State<EventCard> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '12',
+                    it.DateFormat(
+                      'dd',
+                    ).format(it.DateFormat('dd/MM/yyyy').parse(widget.date)),
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -67,7 +69,9 @@ class _EventCardState extends State<EventCard> {
                     ),
                   ),
                   Text(
-                    'Nov',
+                    it.DateFormat(
+                      'MMM',
+                    ).format(it.DateFormat('dd/MM/yyyy').parse(widget.date)),
                     style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
@@ -100,7 +104,7 @@ class _EventCardState extends State<EventCard> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.w),
                       child: Text(
-                        'Birthday Party',
+                        widget.title,
                         style: TextStyle(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.bold,

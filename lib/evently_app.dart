@@ -8,6 +8,7 @@ import 'package:evently_app/features/auth/presentation/screens/forget_password_s
 import 'package:evently_app/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:evently_app/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:evently_app/features/events/presentation/screens/create_event_screen.dart';
+import 'package:evently_app/features/events/presentation/screens/select_location.dart';
 import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
 import 'package:evently_app/features/main_layout/presentation/screens/main_layout_screen.dart';
 import 'package:evently_app/generated/l10n.dart';
@@ -60,6 +61,7 @@ class EventlyApp extends StatelessWidget {
                 '/forgetPassword': (context) => const ForgetPasswordScreen(),
                 '/mainLayout': (context) => const MainLayoutScreen(),
                 '/createEvent': (context) => const CreateEventScreen(),
+                '/selectLocation': (context) => const SelectLocation(),
               },
             );
           },

@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   animated_toggle_switch: ^0.8.4
+  cloud_firestore: ^6.0.0
   cupertino_icons: ^1.0.8
   firebase_auth: ^6.0.0
   firebase_core: ^4.0.0
@@ -41,10 +42,16 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.1.0
   fpdart: ^1.1.1
+  geocoding: ^4.0.0
+  geolocator: ^14.0.2
   get_it: ^8.0.3
   google_fonts: ^6.2.1
+  google_maps_flutter: ^2.12.3
   google_sign_in: ^6.1.6
+  http: ^1.4.0
   injectable: ^2.5.1
+  intl: ^0.20.2
+  mapbox_maps_flutter: ^2.10.0
   shared_preferences: ^2.5.3
   smooth_page_indicator: ^1.2.1
   supabase_flutter: ^2.9.1
@@ -66,12 +73,14 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
+    - .env
     - assets/Auth/
     - assets/main_layout/
     - assets/onboarding_screen/
     - assets/profile/
     - assets/splash_screen/
     - assets/home_screen/
+    - assets/create_event/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see

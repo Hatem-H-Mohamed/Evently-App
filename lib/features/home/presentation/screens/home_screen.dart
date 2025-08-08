@@ -4,16 +4,29 @@ import 'package:evently_app/core/app_theme/app_color/app_color_dark.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_light.dart';
 import 'package:evently_app/core/helper/lang_helper.dart';
 import 'package:evently_app/core/widgets/event_card.dart';
+import 'package:evently_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:evently_app/features/home/presentation/widgets/cat_taps.dart';
 import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
 import 'package:evently_app/generated/l10n.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<HomeCubit>().getEvent();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            " John Safwat",
+                            FirebaseAuth.instance.currentUser!.displayName!,
                             style: TextStyle(
                               fontSize: 24.sp,
                               fontWeight: FontWeight.bold,
@@ -128,17 +141,46 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                  child: EventCard(
-                    imageID: index,
-                    title: 'Birthday Party',
-                    date: '12 Nov',
-                  ),
-                );
+            child: BlocConsumer<HomeCubit, HomeState>(
+              listener: (context, state) {
+                // TODO: implement listener
+              },
+              builder: (context, state) {
+                if (state is GetEventLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColorCommon.primary,
+                    ),
+                  );
+                } else if (state is NoEvent) {
+                  return Center(child: Text(state.message));
+                } else if (state is GetEventSuccess) {
+                  return RefreshIndicator(
+                    displacement: 0,
+                    color: AppColorCommon.primary,
+                    onRefresh: () {
+                      context.read<HomeCubit>().getEvent();
+                      return Future.delayed(const Duration(milliseconds: 200));
+                    },
+                    child: ListView.builder(
+                      itemCount: state.events.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                          child: EventCard(
+                            imageID: index,
+                            title: state.events[index].data()['title'],
+                            date: state.events[index].data()['date'],
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                } else if (state is GetEventError) {
+                  return Center(child: Text(state.message));
+                } else {
+                  return Container();
+                }
               },
             ),
           ),
