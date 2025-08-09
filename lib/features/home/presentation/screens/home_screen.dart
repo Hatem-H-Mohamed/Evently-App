@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evently_app/core/app_assets/icons/app_icons.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_dark.dart';
@@ -168,9 +169,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         return Padding(
                           padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                           child: EventCard(
-                            imageID: index,
+                            imageID: state.events[index].data()['imageId'],
                             title: state.events[index].data()['title'],
                             date: state.events[index].data()['date'],
+                            cardId: state.events[index].id,
+                            time: state.events[index].data()['time'],
+                            placeName: state.events[index].data()['placeName'],
+                            latitude: state.events[index].data()['latitude'],
+                            longitude: state.events[index].data()['longitude'],
+                            description:
+                                state.events[index].data()['description'],
                           ),
                         );
                       },

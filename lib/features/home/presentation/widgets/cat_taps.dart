@@ -3,6 +3,7 @@ import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_dark.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_light.dart';
 import 'package:evently_app/features/events/presentation/cubit/create_event_cubit.dart';
+import 'package:evently_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:evently_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -110,6 +111,15 @@ class _CatTapsState extends State<CatTaps> {
                   selectedIndex = index;
                 });
                 if (widget.tapIndex == 0) {
+                  if (selectedIndex == 0) {
+                    context.read<HomeCubit>().getEvent();
+                  } else {
+                    print(selectedIndex.toString());
+                    print("===============");
+                    context.read<HomeCubit>().getEventsByImageId(
+                      selectedIndex - 1,
+                    );
+                  }
                 } else {
                   context.read<CreateEventCubit>().changeCatImage(
                     selectedIndex,

@@ -24,7 +24,13 @@ final class LocationLoading extends CreateEventState {}
 
 final class PlaceNameLoaded extends CreateEventState {
   final String placeName;
-  PlaceNameLoaded({required this.placeName});
+  final double latitude;
+  final double longitude;
+  PlaceNameLoaded({
+    required this.latitude,
+    required this.longitude,
+    required this.placeName,
+  });
 }
 
 final class PlaceNameError extends CreateEventState {

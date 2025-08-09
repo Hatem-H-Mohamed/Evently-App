@@ -2,6 +2,7 @@ import 'package:evently_app/core/di/service_locator.dart';
 import 'package:evently_app/evently_app.dart';
 import 'package:evently_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:evently_app/features/events/presentation/cubit/create_event_cubit.dart';
+import 'package:evently_app/features/favorite/presentation/cubit/fav_cubit.dart';
 import 'package:evently_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
 import 'package:evently_app/firebase_options.dart';
@@ -30,6 +31,7 @@ void main() async {
       providers: [
         BlocProvider(create: (_) => MainLayoutCubit(lang: lang, theme: theme)),
         BlocProvider(create: (_) => HomeCubit()),
+        BlocProvider(create: (_) => FavCubit()),
         BlocProvider(create: (_) => sl<CreateEventCubit>()),
         BlocProvider(create: (_) => sl<AuthCubit>()),
       ],

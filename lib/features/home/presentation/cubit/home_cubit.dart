@@ -9,12 +9,34 @@ class HomeCubit extends Cubit<HomeState> {
 
   void getEvent() async {
     emit(GetEventLoading());
-    final res = await FirebaseFirestore.instance.collection('events').get();
+    final res =
+        await FirebaseFirestore.instance
+            .collection('events')
+            .orderBy('date', descending: false)
+            .get();
     if (res.docs.isNotEmpty) {
       emit(GetEventSuccess(events: res.docs));
     } else {
       emit(NoEvent(message: "No event found"));
     }
-    // emit(GetEventError(message: "Try again"));
+  }
+
+  void getEventsByImageId(int imageId) async {
+    emit(GetEventLoading());
+    try {
+      final res =
+          await FirebaseFirestore.instance
+              .collection('events')
+              .where('imageId', isEqualTo: imageId)
+              .get();
+
+      if (res.docs.isNotEmpty) {
+        emit(GetEventSuccess(events: res.docs));
+      } else {
+        emit(NoEvent(message: "No event found for this category"));
+      }
+    } catch (e) {
+      emit(GetEventError(message: e.toString()));
+    }
   }
 }

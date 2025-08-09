@@ -23,6 +23,8 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
   String? location;
+  double? latitude;
+  double? longitude;
 
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
@@ -315,6 +317,8 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                               builder: (context, state) {
                                 if (state is PlaceNameLoaded) {
                                   location = state.placeName;
+                                  latitude = state.latitude;
+                                  longitude = state.longitude;
                                   return Text(
                                     state.placeName,
                                     style: TextStyle(
@@ -363,6 +367,8 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                               DateFormat("dd/MM/yyyy").format(selectedDate!),
                               selectedTime!.format(context),
                               location!,
+                              latitude!,
+                              longitude!,
                             );
                             Navigator.of(context).pop();
                           } else {

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evently_app/features/events/domain/usecases/get_current_location_usecase.dart';
 import 'package:evently_app/features/events/domain/usecases/get_place_name_usecase.dart';
+import 'package:evently_app/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,7 +39,13 @@ class CreateEventCubit extends Cubit<CreateEventState> {
     res.fold((failure) => emit(PlaceNameError(message: failure.message)), (
       data,
     ) {
-      emit(PlaceNameLoaded(placeName: data));
+      emit(
+        PlaceNameLoaded(
+          placeName: data,
+          latitude: params.latitude,
+          longitude: params.longitude,
+        ),
+      );
     });
   }
 
@@ -49,6 +56,8 @@ class CreateEventCubit extends Cubit<CreateEventState> {
     String date,
     String time,
     String placeName,
+    double latitude,
+    double longitude,
   ) async {
     emit(AddEventLoading());
     final res = await FirebaseFirestore.instance.collection('events').add({
@@ -59,6 +68,8 @@ class CreateEventCubit extends Cubit<CreateEventState> {
       'time': time,
       'placeName': placeName,
       'userId': FirebaseAuth.instance.currentUser!.uid,
+      'latitude': latitude,
+      'longitude': longitude,
     });
     if (res.id.isNotEmpty) {
       emit(AddEventSuccess());
