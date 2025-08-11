@@ -48,3 +48,24 @@ final class AddEventError extends CreateEventState {
   final String message;
   AddEventError({required this.message});
 }
+
+final class EventDetailsLoading extends CreateEventState {}
+
+final class EventDetailsSuccess extends CreateEventState {
+  final Event event;
+  EventDetailsSuccess({required this.event});
+}
+
+final class EventDetailsError extends CreateEventState {
+  final String message;
+  EventDetailsError({required this.message});
+}
+
+final class DeleteEventLoading extends CreateEventState {}
+
+final class DeleteEventSuccess extends CreateEventState {}
+
+final class DeleteEventError extends CreateEventState {
+  final String message;
+  DeleteEventError({required this.message});
+}

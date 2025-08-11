@@ -23,10 +23,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool _animate = false;
+
   @override
   void initState() {
     super.initState();
     context.read<HomeCubit>().getEvent();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _animate = true;
+      });
+    });
   }
 
   @override
@@ -34,110 +42,129 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            height: 190.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color:
-                  Theme.of(context).brightness == Brightness.light
-                      ? AppColorCommon.primary
-                      : AppColorDark.background,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(35.r),
-                bottomRight: Radius.circular(35.r),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 40, 16, 0),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            S.of(context).WelcomeBack,
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColorLight.background,
-                            ),
-                          ),
-                          Text(
-                            FirebaseAuth.instance.currentUser!.displayName!,
-                            style: TextStyle(
-                              fontSize: 24.sp,
-                              fontWeight: FontWeight.bold,
-                              color: AppColorLight.background,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      InkWell(
-                        onTap: () {
-                          context.read<MainLayoutCubit>().toggleTheme(
-                            Theme.of(context).brightness == Brightness.light
-                                ? 'Dark'
-                                : 'Light',
-                          );
-                        },
-                        child: SvgPicture.asset(AppIconsSvg.sun),
-                      ),
-                      SizedBox(width: 5.w),
-                      InkWell(
-                        onTap: () {
-                          context.read<MainLayoutCubit>().changeLanguage(
-                            LangHelper.isArabic() ? 'en' : 'ar',
-                          );
-                        },
-                        child: Container(
-                          height: 33.h,
-                          width: 35.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.r),
-                            color: AppColorLight.background,
-                          ),
-                          child: Center(
-                            child: Text(
-                              S.of(context).CurrLang,
+          TweenAnimationBuilder<double>(
+            tween: Tween<double>(begin: 0, end: _animate ? 190.h : 0),
+            duration: const Duration(milliseconds: 700),
+            curve: Curves.easeOut,
+            builder: (context, height, child) {
+              return Container(
+                height: height,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color:
+                      Theme.of(context).brightness == Brightness.light
+                          ? AppColorCommon.primary
+                          : AppColorDark.background,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(35.r),
+                    bottomRight: Radius.circular(35.r),
+                  ),
+                ),
+                child: ClipRect(
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    heightFactor: height / 190.h,
+                    child: child,
+                  ),
+                ),
+              );
+            },
+            child: SingleChildScrollView(
+              physics: const NeverScrollableScrollPhysics(),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 40, 16, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              S.of(context).WelcomeBack,
                               style: TextStyle(
                                 fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColorLight.background,
+                              ),
+                            ),
+                            Text(
+                              FirebaseAuth.instance.currentUser!.displayName!,
+                              style: TextStyle(
+                                fontSize: 24.sp,
                                 fontWeight: FontWeight.bold,
-                                color:
-                                    Theme.of(context).brightness ==
-                                            Brightness.light
-                                        ? AppColorCommon.primary
-                                        : AppColorDark.background,
+                                color: AppColorLight.background,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
+                        InkWell(
+                          onTap: () {
+                            context.read<MainLayoutCubit>().toggleTheme(
+                              Theme.of(context).brightness == Brightness.light
+                                  ? 'Dark'
+                                  : 'Light',
+                            );
+                          },
+                          child: SvgPicture.asset(AppIconsSvg.sun),
+                        ),
+                        SizedBox(width: 5.w),
+                        InkWell(
+                          onTap: () {
+                            context.read<MainLayoutCubit>().changeLanguage(
+                              LangHelper.isArabic() ? 'en' : 'ar',
+                            );
+                          },
+                          child: Container(
+                            height: 33.h,
+                            width: 35.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.r),
+                              color: AppColorLight.background,
+                            ),
+                            child: Center(
+                              child: Text(
+                                S.of(context).CurrLang,
+                                style: TextStyle(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color:
+                                      Theme.of(context).brightness ==
+                                              Brightness.light
+                                          ? AppColorCommon.primary
+                                          : AppColorDark.background,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 8.h),
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset(AppIconsSvg.mapUnselected),
-                          SizedBox(width: 4.w),
-                          Text(
-                            "cairo, Egypt",
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColorLight.background,
+                      ],
+                    ),
+                    SizedBox(height: 8.h),
+                    Column(
+                      children: [
+                        Row(
+                          children: [
+                            SvgPicture.asset(AppIconsSvg.mapUnselected),
+                            SizedBox(width: 4.w),
+                            Text(
+                              "cairo, Egypt",
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColorLight.background,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 12.h),
-                      CatTaps(tapIndex: 0),
-                    ],
-                  ),
-                ],
+                          ],
+                        ),
+                        SizedBox(height: 12.h),
+                        CatTaps(tapIndex: 0),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -166,19 +193,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: ListView.builder(
                       itemCount: state.events.length,
                       itemBuilder: (context, index) {
+                        final event = state.events[index];
                         return Padding(
                           padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                           child: EventCard(
-                            imageID: state.events[index].data()['imageId'],
-                            title: state.events[index].data()['title'],
-                            date: state.events[index].data()['date'],
-                            cardId: state.events[index].id,
-                            time: state.events[index].data()['time'],
-                            placeName: state.events[index].data()['placeName'],
-                            latitude: state.events[index].data()['latitude'],
-                            longitude: state.events[index].data()['longitude'],
-                            description:
-                                state.events[index].data()['description'],
+                            imageID: event.imageId,
+                            title: event.title,
+                            date: event.date,
+                            cardId: event.id,
+                            time: event.time,
+                            placeName: event.placeName,
+                            latitude: event.latitude,
+                            longitude: event.longitude,
+                            description: event.description,
                           ),
                         );
                       },

@@ -27,4 +27,6 @@ class AppIconsSvg {
   static const String calender = "assets/create_event/calendar_days.svg";
   static const String clock = "assets/create_event/clock.svg";
   static const String noteEdit = "assets/create_event/note_edit.svg";
+  static const String noteEdit2 = "assets/event_details/Edit2.svg";
+  static const String noteDelete = "assets/event_details/Delete.svg";
 }

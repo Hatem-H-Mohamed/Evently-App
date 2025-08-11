@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:evently_app/core/entities/event.dart';
+import 'package:evently_app/core/models/event_model.dart';
 import 'package:evently_app/features/events/domain/usecases/get_current_location_usecase.dart';
 import 'package:evently_app/features/events/domain/usecases/get_place_name_usecase.dart';
 import 'package:evently_app/generated/l10n.dart';
@@ -70,11 +72,76 @@ class CreateEventCubit extends Cubit<CreateEventState> {
       'userId': FirebaseAuth.instance.currentUser!.uid,
       'latitude': latitude,
       'longitude': longitude,
+      'createdAt': Timestamp.now(),
     });
     if (res.id.isNotEmpty) {
       emit(AddEventSuccess());
     } else {
       emit(AddEventError(message: "Try again"));
+    }
+  }
+
+  void deleteEvent(String eventId) async {
+    emit(DeleteEventLoading());
+    try {
+      await FirebaseFirestore.instance
+          .collection('events')
+          .doc(eventId)
+          .delete();
+      emit(DeleteEventSuccess());
+    } catch (e) {
+      emit(DeleteEventError(message: e.toString()));
+    }
+  }
+
+  void updateEvent(
+    String eventId,
+    int imageId,
+    String title,
+    String description,
+    String date,
+    String time,
+    String placeName,
+    double latitude,
+    double longitude,
+  ) async {
+    emit(AddEventLoading());
+
+    try {
+      await FirebaseFirestore.instance
+          .collection('events')
+          .doc(eventId)
+          .update({
+            'imageId': imageId,
+            'title': title,
+            'description': description,
+            'date': date,
+            'time': time,
+            'placeName': placeName,
+            'userId': FirebaseAuth.instance.currentUser!.uid,
+            'latitude': latitude,
+            'longitude': longitude,
+            'createdAt': Timestamp.now(),
+          });
+
+      emit(AddEventSuccess());
+    } catch (e) {
+      emit(AddEventError(message: e.toString()));
+    }
+  }
+
+  void getEventDetails(String eventId) async {
+    emit(EventDetailsLoading());
+    final res =
+        await FirebaseFirestore.instance
+            .collection('events')
+            .doc(eventId)
+            .get();
+    final event = EventModel.fromFirestore(res.data()!, res.id);
+    if (res.exists) {
+      emit(EventDetailsSuccess(event: event));
+    } else {
+      emit(EventDetailsError(message: "Try again"));
     }
   }
 }

@@ -67,7 +67,13 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               },
               builder: (context, state) {
                 if (state is FavLoading) {
-                  return const Center(child: CircularProgressIndicator());
+                  return Expanded(
+                    child: const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColorCommon.primary,
+                      ),
+                    ),
+                  );
                 } else if (state is FavEmpty) {
                   return const Center(child: Text('No Favorites'));
                 } else if (state is FavLoaded) {

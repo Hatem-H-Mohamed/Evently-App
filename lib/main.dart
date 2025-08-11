@@ -5,6 +5,7 @@ import 'package:evently_app/features/events/presentation/cubit/create_event_cubi
 import 'package:evently_app/features/favorite/presentation/cubit/fav_cubit.dart';
 import 'package:evently_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
+import 'package:evently_app/features/map/presentation/cubit/map_cubit.dart';
 import 'package:evently_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ void main() async {
         BlocProvider(create: (_) => MainLayoutCubit(lang: lang, theme: theme)),
         BlocProvider(create: (_) => HomeCubit()),
         BlocProvider(create: (_) => FavCubit()),
+        BlocProvider(create: (_) => MapCubit()),
         BlocProvider(create: (_) => sl<CreateEventCubit>()),
         BlocProvider(create: (_) => sl<AuthCubit>()),
       ],

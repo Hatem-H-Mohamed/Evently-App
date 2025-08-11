@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:evently_app/core/entities/event.dart';
+import 'package:evently_app/core/models/event_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,10 +14,14 @@ class HomeCubit extends Cubit<HomeState> {
     final res =
         await FirebaseFirestore.instance
             .collection('events')
-            .orderBy('date', descending: false)
+            .orderBy('createdAt', descending: true)
             .get();
+    final events =
+        res.docs
+            .map((doc) => EventModel.fromFirestore(doc.data(), doc.id))
+            .toList();
     if (res.docs.isNotEmpty) {
-      emit(GetEventSuccess(events: res.docs));
+      emit(GetEventSuccess(events: events));
     } else {
       emit(NoEvent(message: "No event found"));
     }
@@ -30,8 +36,13 @@ class HomeCubit extends Cubit<HomeState> {
               .where('imageId', isEqualTo: imageId)
               .get();
 
+      final events =
+          res.docs
+              .map((doc) => EventModel.fromFirestore(doc.data(), doc.id))
+              .toList();
+
       if (res.docs.isNotEmpty) {
-        emit(GetEventSuccess(events: res.docs));
+        emit(GetEventSuccess(events: events));
       } else {
         emit(NoEvent(message: "No event found for this category"));
       }

@@ -364,8 +364,19 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                               index!,
                               _titleController.text,
                               _descriptionController.text,
-                              DateFormat("dd/MM/yyyy").format(selectedDate!),
-                              selectedTime!.format(context),
+                              DateFormat(
+                                "dd/MM/yyyy",
+                                'en',
+                              ).format(selectedDate!),
+                              DateFormat("hh:mm a", 'en').format(
+                                DateTime(
+                                  0,
+                                  1,
+                                  1,
+                                  selectedTime!.hour,
+                                  selectedTime!.minute,
+                                ),
+                              ),
                               location!,
                               latitude!,
                               longitude!,

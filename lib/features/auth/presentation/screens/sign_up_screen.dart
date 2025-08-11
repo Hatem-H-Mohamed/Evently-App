@@ -154,6 +154,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       title: S.of(context).CreateAccount,
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          Navigator.of(context).pop();
                           context.read<AuthCubit>().signUpwithEmail(
                             _nameController.text.trim(),
                             _emailController.text.trim(),

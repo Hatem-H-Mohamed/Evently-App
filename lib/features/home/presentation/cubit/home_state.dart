@@ -8,7 +8,7 @@ final class HomeInitial extends HomeState {}
 final class GetEventLoading extends HomeState {}
 
 final class GetEventSuccess extends HomeState {
-  final List<QueryDocumentSnapshot<Map<String, dynamic>>> events;
+  final List<Event> events;
   GetEventSuccess({required this.events});
 }
 

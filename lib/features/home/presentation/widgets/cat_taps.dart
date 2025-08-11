@@ -9,8 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CatTaps extends StatefulWidget {
-  final int tapIndex; // 0 = home, 1 = create
-  const CatTaps({super.key, required this.tapIndex});
+  final int tapIndex;
+  final int? mySelectedIndex; // 0 = home, 1 = create
+  const CatTaps({super.key, required this.tapIndex, this.mySelectedIndex});
 
   @override
   State<CatTaps> createState() => _CatTapsState();
@@ -18,6 +19,13 @@ class CatTaps extends StatefulWidget {
 
 class _CatTapsState extends State<CatTaps> {
   int selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.mySelectedIndex ?? 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> categories = [

@@ -5,9 +5,11 @@ import 'package:evently_app/core/app_theme/app_color/app_color_common.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_dark.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_light.dart';
 import 'package:evently_app/core/consts/category_list.dart';
+import 'package:evently_app/features/events/presentation/cubit/create_event_cubit.dart';
 import 'package:evently_app/features/events/presentation/screens/event_details_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart' as it;
 
@@ -53,17 +55,7 @@ class _EventCardState extends State<EventCard> {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder:
-                (context) => EventDetailsScreen(
-                  imageId: widget.imageID,
-                  title: widget.title,
-                  date: widget.date,
-                  description: widget.description,
-                  time: widget.time,
-                  placeName: widget.placeName,
-                  latitude: widget.latitude,
-                  longitude: widget.longitude,
-                ),
+            builder: (context) => EventDetailsScreen(eventId: widget.cardId),
           ),
         );
       },
@@ -100,9 +92,9 @@ class _EventCardState extends State<EventCard> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      it.DateFormat(
-                        'dd',
-                      ).format(it.DateFormat('dd/MM/yyyy').parse(widget.date)),
+                      it.DateFormat('dd', 'en').format(
+                        it.DateFormat('dd/MM/yyyy', 'en').parse(widget.date),
+                      ),
                       style: TextStyle(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
@@ -110,9 +102,9 @@ class _EventCardState extends State<EventCard> {
                       ),
                     ),
                     Text(
-                      it.DateFormat(
-                        'MMM',
-                      ).format(it.DateFormat('dd/MM/yyyy').parse(widget.date)),
+                      it.DateFormat('MMM', 'en').format(
+                        it.DateFormat('dd/MM/yyyy', 'en').parse(widget.date),
+                      ),
                       style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.bold,

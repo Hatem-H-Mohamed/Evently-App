@@ -5,6 +5,7 @@ import 'package:evently_app/core/app_theme/app_color/app_color_light.dart';
 import 'package:evently_app/core/helper/lang_helper.dart';
 import 'package:evently_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
+import 'package:evently_app/features/profile/presentation/screens/profile_image_view_screen.dart';
 import 'package:evently_app/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,18 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  bool _animate = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _animate = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     String selectedLanguage = LangHelper.isArabic() ? "ar" : "en";
@@ -46,55 +59,92 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                height: 170.h,
-                decoration: BoxDecoration(
-                  color: AppColorCommon.primary,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(60.r),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16, top: 27),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        height: 124.h,
-                        width: 124.w,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(60.r),
-                            bottomLeft: Radius.circular(60.r),
-                            bottomRight: Radius.circular(60.r),
+              TweenAnimationBuilder<double>(
+                tween: Tween<double>(begin: 0, end: _animate ? 170.h : 0),
+                duration: const Duration(milliseconds: 700),
+                curve: Curves.easeOut,
+                builder: (context, height, child) {
+                  return Container(
+                    height: height,
+                    decoration: BoxDecoration(
+                      color: AppColorCommon.primary,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(60.r),
+                      ),
+                    ),
+                    child: ClipRect(
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        heightFactor: height / 170.h,
+                        child: child,
+                      ),
+                    ),
+                  );
+                },
+                child: SingleChildScrollView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 16,
+                      right: 16,
+                      top: 27,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (_) => ProfileImageViewScreen(
+                                      imagePath: AppImages.profileImage,
+                                    ),
+                              ),
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Container(
+                              height: 124.h,
+                              width: 124.w,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(60.r),
+                                  bottomLeft: Radius.circular(60.r),
+                                  bottomRight: Radius.circular(60.r),
+                                ),
+                              ),
+                              child: Image.asset(AppImages.profileImage),
+                            ),
                           ),
                         ),
-                        child: Image.asset(AppImages.profileImage),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            FirebaseAuth.instance.currentUser!.displayName!,
-                            style: TextStyle(
-                              fontSize: 24.sp,
-                              fontWeight: FontWeight.bold,
-                              color: AppColorLight.background,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              FirebaseAuth.instance.currentUser!.displayName!,
+                              style: TextStyle(
+                                fontSize: 22.sp,
+                                fontWeight: FontWeight.bold,
+                                color: AppColorLight.background,
+                              ),
                             ),
-                          ),
-                          Text(
-                            FirebaseAuth.instance.currentUser!.email!,
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColorLight.background,
+                            Text(
+                              FirebaseAuth.instance.currentUser!.email!,
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColorLight.background,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -201,13 +251,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       SizedBox(height: 20.h),
                       ElevatedButton.icon(
                         style: ButtonStyle(
-                          backgroundColor: WidgetStateProperty.all(
+                          backgroundColor: MaterialStateProperty.all(
                             const Color(0xFFFF5659),
                           ),
-                          foregroundColor: WidgetStateProperty.all(
+                          foregroundColor: MaterialStateProperty.all(
                             AppColorLight.background,
                           ),
-                          iconColor: WidgetStatePropertyAll(
+                          iconColor: MaterialStateProperty.all(
                             AppColorLight.background,
                           ),
                         ),
