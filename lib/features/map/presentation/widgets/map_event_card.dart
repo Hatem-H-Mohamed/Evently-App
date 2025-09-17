@@ -41,7 +41,7 @@ class _MapEventCardState extends State<MapEventCard> {
           );
         },
         child: Container(
-          width: 290.w,
+          // width: 290.w,
           decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,
             borderRadius: BorderRadius.circular(16.r),
@@ -70,12 +70,12 @@ class _MapEventCardState extends State<MapEventCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 30.h,
+                      // height: 30.h,
                       width: 140.w,
                       child: Text(
                         widget.title,
                         overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
+                        maxLines: 1,
                         style: TextStyle(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.bold,
@@ -95,6 +95,8 @@ class _MapEventCardState extends State<MapEventCard> {
                         ),
                         Text(
                           widget.placeName,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
                           style: TextStyle(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.bold,

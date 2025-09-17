@@ -5,6 +5,8 @@ import 'package:evently_app/core/app_theme/app_color/app_color_dark.dart';
 import 'package:evently_app/core/app_theme/app_color/app_color_light.dart';
 import 'package:evently_app/core/helper/lang_helper.dart';
 import 'package:evently_app/core/widgets/event_card.dart';
+import 'package:evently_app/features/events/domain/usecases/get_place_name_usecase.dart';
+import 'package:evently_app/features/events/presentation/cubit/create_event_cubit.dart';
 import 'package:evently_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:evently_app/features/home/presentation/widgets/cat_taps.dart';
 import 'package:evently_app/features/main_layout/presentation/cubit/cubit/main_layout_cubit.dart';
@@ -29,6 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     context.read<HomeCubit>().getEvent();
+
+    context.read<CreateEventCubit>().getCurrentLocation();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
@@ -149,13 +153,89 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             SvgPicture.asset(AppIconsSvg.mapUnselected),
                             SizedBox(width: 4.w),
-                            Text(
-                              "cairo, Egypt",
-                              style: TextStyle(
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w600,
-                                color: AppColorLight.background,
-                              ),
+                            BlocBuilder<CreateEventCubit, CreateEventState>(
+                              buildWhen: (_, state) => state is LocationLoaded,
+                              builder: (context, state) {
+                                if (state is LocationLoading) {
+                                  return Text(
+                                    "Getting location...",
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColorLight.background,
+                                    ),
+                                  );
+                                } else if (state is LocationLoaded) {
+                                  // Get the coordinates
+                                  final lat = state.location.latitude;
+                                  final lon = state.location.longitude;
+
+                                  // Now get the place name
+                                  context.read<CreateEventCubit>().getPlaceName(
+                                    LocationParams(
+                                      latitude: lat,
+                                      longitude: lon,
+                                    ),
+                                  );
+
+                                  return state.location != null
+                                      ? BlocBuilder<
+                                        CreateEventCubit,
+                                        CreateEventState
+                                      >(
+                                        buildWhen: (previous, current) => current
+                                            is PlaceNameLoaded,
+                                        builder: (context, placeState) {
+                                          if (placeState is PlaceNameLoaded) {
+                                            return Text(
+                                              placeState.placeName,
+                                              style: TextStyle(
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.w600,
+                                                color: AppColorLight.background,
+                                              ),
+                                            );
+                                          } else if (placeState
+                                              is PlaceNameLoading) {
+                                            return Text(
+                                              "Fetching address...",
+                                              style: TextStyle(
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.w600,
+                                                color: AppColorLight.background,
+                                              ),
+                                            );
+                                          } else {
+                                            return Text(
+                                              "Unknown location",
+                                              style: TextStyle(
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.w600,
+                                                color: AppColorLight.background,
+                                              ),
+                                            );
+                                          }
+                                        },
+                                      )
+                                      : Text(
+                                        "Unknown location",
+                                        style: TextStyle(
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w600,
+                                          color: AppColorLight.background,
+                                        ),
+                                      );
+                                } else {
+                                  return Text(
+                                    "Location not found",
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColorLight.background,
+                                    ),
+                                  );
+                                }
+                              },
                             ),
                           ],
                         ),

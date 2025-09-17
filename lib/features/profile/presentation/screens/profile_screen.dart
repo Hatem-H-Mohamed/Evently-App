@@ -60,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TweenAnimationBuilder<double>(
-                tween: Tween<double>(begin: 0, end: _animate ? 170.h : 0),
+                tween: Tween<double>(begin: 0, end: _animate ? 90.h : 0),
                 duration: const Duration(milliseconds: 700),
                 curve: Curves.easeOut,
                 builder: (context, height, child) {
@@ -75,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: ClipRect(
                       child: Align(
                         alignment: Alignment.topCenter,
-                        heightFactor: height / 170.h,
+                        heightFactor: height / 90.h,
                         child: child,
                       ),
                     ),
@@ -90,37 +90,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       top: 27,
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder:
-                                    (_) => ProfileImageViewScreen(
-                                      imagePath: AppImages.profileImage,
-                                    ),
-                              ),
-                            );
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: Container(
-                              height: 124.h,
-                              width: 124.w,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(60.r),
-                                  bottomLeft: Radius.circular(60.r),
-                                  bottomRight: Radius.circular(60.r),
-                                ),
-                              ),
-                              child: Image.asset(AppImages.profileImage),
-                            ),
-                          ),
-                        ),
+                        // GestureDetector(
+                        //   onTap: () {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder:
+                        //             (_) => ProfileImageViewScreen(
+                        //               imagePath: AppImages.profileImage,
+                        //             ),
+                        //       ),
+                        //     );
+                        //   },
+                        //   child: Padding(
+                        //     padding: const EdgeInsets.only(top: 8.0),
+                        //     child: Container(
+                        //       height: 124.h,
+                        //       width: 124.w,
+                        //       decoration: BoxDecoration(
+                        //         color: Colors.white,
+                        //         borderRadius: BorderRadius.only(
+                        //           topRight: Radius.circular(60.r),
+                        //           bottomLeft: Radius.circular(60.r),
+                        //           bottomRight: Radius.circular(60.r),
+                        //         ),
+                        //       ),
+                        //       child: Image.asset(AppImages.profileImage),
+                        //     ),
+                        //   ),
+                        // ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
